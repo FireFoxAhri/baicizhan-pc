@@ -28,22 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tbWord = new System.Windows.Forms.TextBox();
             this.cboWordSource = new System.Windows.Forms.ComboBox();
+            this.listView1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(2, 30);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(145, 459);
-            this.listBox1.TabIndex = 0;
             // 
             // tbWord
             // 
@@ -61,10 +49,22 @@
             this.cboWordSource.Items.AddRange(new object[] {
             "四级单词",
             "历史记录"});
-            this.cboWordSource.Location = new System.Drawing.Point(9, 495);
+            this.cboWordSource.Location = new System.Drawing.Point(6, 492);
             this.cboWordSource.Name = "cboWordSource";
-            this.cboWordSource.Size = new System.Drawing.Size(129, 20);
+            this.cboWordSource.Size = new System.Drawing.Size(139, 20);
             this.cboWordSource.TabIndex = 2;
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listView1.FormattingEnabled = true;
+            this.listView1.Location = new System.Drawing.Point(2, 30);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(145, 459);
+            this.listView1.TabIndex = 0;
             // 
             // WordList
             // 
@@ -72,7 +72,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cboWordSource);
             this.Controls.Add(this.tbWord);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listView1);
             this.Name = "WordList";
             this.Size = new System.Drawing.Size(156, 523);
             this.ResumeLayout(false);
@@ -82,8 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox tbWord;
         private System.Windows.Forms.ComboBox cboWordSource;
+        private System.Windows.Forms.ListBox listView1;
     }
 }

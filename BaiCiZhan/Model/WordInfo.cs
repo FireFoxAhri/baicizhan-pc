@@ -40,5 +40,10 @@ namespace BaiCiZhan.Model
         public string sentence { get; set; }
         public string sentence_trans { get; set; }
         public string sentence_audio { get; set; }
+        /// <summary>
+        /// 单词源,四级单词,高考单词之类;
+        /// </summary>
+        public string source { get; set; }
+        
     }
 }

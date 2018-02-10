@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using QXX.Common.Forms;
 using BaiCiZhan.Helper;
 
+
 namespace BaiCiZhan
 {
     public partial class frmStudy : Form
@@ -34,20 +35,23 @@ namespace BaiCiZhan
 
         void frmStudy_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (e.KeyCode == Keys.F2)
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D1)
             {
                 this.wordList1.WordTextBox.Select();
                 this.wordList1.WordTextBox.SelectAll();
+                e.Handled = true;
             }
-            else if (e.KeyCode == Keys.F4)
+            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
             {
                 this.wordView1.btnAudio.PerformClick();
                 this.wordView1.InputSentenceRichTextBox.Select();
+                e.Handled = true;
+
             }
-            else if (e.KeyCode == Keys.F5)
+            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D3)
             {
                 this.wordView1.btnShowSentenc.PerformClick();
+                e.Handled = true;
             }
         }
 
@@ -66,13 +70,12 @@ namespace BaiCiZhan
             try
             {
                 var word = wordList1.GetSelectWrod();
-                if (string.IsNullOrEmpty(word))
+                if (word == null)
                 {
                     MessageBox.Show("没有选中单词");
                     return;
                 }
-                var info = CET4Helper.GetInstance().GetWord(word);
-                wordView1.ShowWordInfo(info);
+                wordView1.ShowWordInfo(word);
             }
             catch (Exception ex)
             {

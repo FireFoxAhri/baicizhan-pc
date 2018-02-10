@@ -56,7 +56,7 @@
             this.btnAudio.Name = "btnAudio";
             this.btnAudio.Size = new System.Drawing.Size(63, 23);
             this.btnAudio.TabIndex = 1;
-            this.btnAudio.Text = "播放(&F4)";
+            this.btnAudio.Text = "播放(C2)";
             this.btnAudio.UseVisualStyleBackColor = true;
             this.btnAudio.Click += new System.EventHandler(this.btnAudio_Click);
             // 
@@ -94,7 +94,7 @@
             this.btnShowSentenc.Name = "btnShowSentenc";
             this.btnShowSentenc.Size = new System.Drawing.Size(75, 23);
             this.btnShowSentenc.TabIndex = 4;
-            this.btnShowSentenc.Text = "显示(F5)";
+            this.btnShowSentenc.Text = "显示(C3)";
             this.btnShowSentenc.UseVisualStyleBackColor = true;
             this.btnShowSentenc.Click += new System.EventHandler(this.btnShowSentenc_Click);
             // 

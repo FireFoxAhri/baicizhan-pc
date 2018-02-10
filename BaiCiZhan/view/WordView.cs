@@ -64,7 +64,8 @@ namespace BaiCiZhan.view
             pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
             Helper.AudioHelper.GetInstance().Play(wordInfo.word_audio, () =>
             {
-                Helper.AudioHelper.GetInstance().Play(wordInfo.sentence_audio);
+                //Helper.AudioHelper.GetInstance().Play(wordInfo.sentence_audio);
+                btnAudio.PerformClick();
             });
 
 
@@ -80,7 +81,7 @@ namespace BaiCiZhan.view
                 var wh = helper.GetAll().Last();
                 if (wh.Word != wordInfo.word)
                 {
-                    helper.Add(wordInfo.word);
+                    helper.Add(wordInfo);
                 }
 
 

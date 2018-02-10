@@ -9,7 +9,6 @@ namespace BaiCiZhan.Helper
 {
     public class AudioHelper
     {
-
         bool isDeviceReady = false;
 
         static AudioHelper _instance;
@@ -50,16 +49,20 @@ namespace BaiCiZhan.Helper
                     {
                         // play the stream channel
                         Bass.BASS_ChannelPlay(stream, false);
-                        SYNCPROC _mySync = new SYNCPROC((a, b, c, d) =>
+                        if (action != null)
                         {
-                            if (action != null)
-                            {
-                                action();
-                            }
-                        });
+                            SYNCPROC _mySync = new SYNCPROC((a, b, c, d) =>
+                                                   {
+                                                       if (action != null)
+                                                       {
+                                                           action();
+                                                       }
+                                                   });
 
-                        Bass.BASS_ChannelSetSync(stream, BASSSync.BASS_SYNC_END | BASSSync.BASS_SYNC_MIXTIME,
-                         0, _mySync, IntPtr.Zero);
+                            Bass.BASS_ChannelSetSync(stream, BASSSync.BASS_SYNC_END | BASSSync.BASS_SYNC_MIXTIME,
+                             0, _mySync, IntPtr.Zero);
+                        }
+
                     }
                     else
                     {

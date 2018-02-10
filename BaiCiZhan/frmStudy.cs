@@ -44,7 +44,6 @@ namespace BaiCiZhan
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
             {
                 this.wordView1.btnAudio.PerformClick();
-                this.wordView1.InputSentenceRichTextBox.Select();
                 e.Handled = true;
 
             }

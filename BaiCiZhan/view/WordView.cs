@@ -65,7 +65,11 @@ namespace BaiCiZhan.view
             Helper.AudioHelper.GetInstance().Play(wordInfo.word_audio, () =>
             {
                 //Helper.AudioHelper.GetInstance().Play(wordInfo.sentence_audio);
-                btnAudio.PerformClick();
+                this.Invoke((MethodInvoker)delegate
+                {
+                    btnAudio.PerformClick();
+                });
+
             });
 
 
@@ -89,6 +93,8 @@ namespace BaiCiZhan.view
                 btnAudio.Refresh();
                 var file = this.wordInfo.sentence_audio;
                 Helper.AudioHelper.GetInstance().Play(file);
+                rtbInputSentence.Select();
+
             }
             catch (Exception ex)
             {

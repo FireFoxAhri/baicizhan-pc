@@ -49,7 +49,7 @@ namespace BaiCiZhan.Helper
                     {
                         // play the stream channel
                         Bass.BASS_ChannelPlay(stream, false);
-                       
+                        //todo: 释放stream
                         {
                             SYNCPROC _mySync = new SYNCPROC((a, b, c, d) =>
                                                    {

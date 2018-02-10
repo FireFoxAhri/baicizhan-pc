@@ -57,14 +57,12 @@ namespace BaiCiZhan.view
 {1}
 {2}
 {3}
-{4}
-", wordInfo.word, wordInfo.accent, wordInfo.word_etyma, wordInfo.mean_cn, wordInfo.word_etyma).Trim();
+", wordInfo.word, wordInfo.accent, wordInfo.word_etyma, wordInfo.mean_cn).Trim();
             rtbWrodInfo.Text = msg;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
             Helper.AudioHelper.GetInstance().Play(wordInfo.word_audio, () =>
             {
-                //Helper.AudioHelper.GetInstance().Play(wordInfo.sentence_audio);
                 this.Invoke((MethodInvoker)delegate
                 {
                     btnAudio.PerformClick();

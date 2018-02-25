@@ -41,9 +41,13 @@ namespace BaiCiZhan.view
             }
 
         }
-
+     
         public void ShowWordInfo(WordInfo wordInfo)
         {
+            if (Helper.AudioHelper.GetInstance().isPlaying)
+            {
+                return;
+            }
             //清理;
             rtbWrodInfo.Text = "";
             rtbSentence.Text = "";
@@ -69,8 +73,6 @@ namespace BaiCiZhan.view
                 });
 
             });
-
-
         }
 
         private void btnAudio_Click(object sender, EventArgs e)

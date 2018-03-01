@@ -49,6 +49,7 @@ namespace BaiCiZhan.view
 
         void cboWordSource_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tbWord.Text = "";
             if (isHistory())
             {
                 loadList();

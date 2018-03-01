@@ -35,6 +35,7 @@
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblSeconds = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -113,10 +114,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
             // 
+            // lblSeconds
+            // 
+            this.lblSeconds.AutoSize = true;
+            this.lblSeconds.Location = new System.Drawing.Point(10, 199);
+            this.lblSeconds.Name = "lblSeconds";
+            this.lblSeconds.Size = new System.Drawing.Size(11, 12);
+            this.lblSeconds.TabIndex = 6;
+            this.lblSeconds.Text = "0";
+            // 
             // WordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblSeconds);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rtbWrodInfo);
@@ -125,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -137,6 +149,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Button btnAudio;
         public System.Windows.Forms.Button btnShowSentenc;
+        private System.Windows.Forms.Label lblSeconds;
 
     }
 }

@@ -24,10 +24,21 @@ namespace BaiCiZhan.view
             }
         }
         WordInfo wordInfo;
+        Timer timer = new Timer();
         public WordView()
         {
             InitializeComponent();
             this.Load += WordView_Load;
+            timer.Tick += timer_Tick;
+            timer.Interval = 1000;
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            var text = lblSeconds.Text;
+            int seconds;
+            int.TryParse(text, out seconds);
+            lblSeconds.Text = (++seconds).ToString();
         }
 
         void WordView_Load(object sender, EventArgs e)
@@ -41,7 +52,7 @@ namespace BaiCiZhan.view
             }
 
         }
-     
+
         public void ShowWordInfo(WordInfo wordInfo)
         {
             if (Helper.AudioHelper.GetInstance().isPlaying)
@@ -53,8 +64,18 @@ namespace BaiCiZhan.view
             rtbSentence.Text = "";
             rtbInputSentence.Text = "";
             pictureBox1.BackgroundImage = null;
+            lblSeconds.Text = "0";
+            this.timer.Stop();
 
+            //添加历史记录
+            IHistoryHelper helper = new HistoryHelper();
+            var wh = helper.GetAll().Aggregate((max, n) => max.AddTime > n.AddTime ? max : n);
+            if (wh.Word != wordInfo.word)
+            {
+                helper.Add(wordInfo);
+            }
 
+            this.timer.Start();
             this.wordInfo = wordInfo;
             var msg = string.Format(@"
 {0}
@@ -80,15 +101,6 @@ namespace BaiCiZhan.view
             var text = btnAudio.Text;
             try
             {
-                //添加历史记录
-                IHistoryHelper helper = new HistoryHelper();
-                var wh = helper.GetAll().Last();
-                if (wh.Word != wordInfo.word)
-                {
-                    helper.Add(wordInfo);
-                }
-
-
                 btnAudio.Text = "播放中";
                 btnAudio.Refresh();
                 var file = this.wordInfo.sentence_audio;

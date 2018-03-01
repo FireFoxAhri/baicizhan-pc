@@ -37,6 +37,10 @@ namespace BaiCiZhan.Helper
             }
         }
 
+        /// <summary>
+        /// 降序排序
+        /// </summary>
+        /// <returns></returns>
         public List<WordHistory> GetAll()
         {
             var lines = File.ReadAllLines(HISTORY_FILE);
@@ -50,7 +54,7 @@ namespace BaiCiZhan.Helper
                 var wh = WordHistory.FromString(line);
                 whs.Add(wh);
             }
-            return whs;
+            return whs.OrderByDescending(n=>n.AddTime).ToList();
         }
         public List<WordHistory> GetAll(string wordContain)
         {

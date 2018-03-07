@@ -10,7 +10,6 @@ namespace BaiCiZhan.Helper
 {
     public interface IHistoryHelper
     {
-
         void Add(WordInfo wordInfo);
         List<WordHistory> GetAll();
     }

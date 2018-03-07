@@ -73,8 +73,16 @@ namespace BaiCiZhan.view
 
             //添加历史记录
             IHistoryHelper helper = new HistoryHelper();
-            var wh = helper.GetAll().Aggregate((max, n) => max.AddTime > n.AddTime ? max : n);
-            if (wh.Word != wordInfo.word)
+
+            ////如果当前单词和最后一个单词不相同就添加, 也就是最近的单词不重复添加
+            //var wh = helper.GetAll().Aggregate((max, n) => max.AddTime > n.AddTime ? max : n);
+            //if (wh.Word != wordInfo.word)
+            //{
+            //    helper.Add(wordInfo);
+            //}
+            //一小时之内不重复添加
+            var wh = helper.GetAll().FirstOrDefault(n => n.AddTime > DateTime.Now.AddHours(-1) && n.Word == wordInfo.word);
+            if (wh == null)
             {
                 helper.Add(wordInfo);
             }

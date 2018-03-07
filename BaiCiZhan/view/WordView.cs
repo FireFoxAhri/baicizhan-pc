@@ -35,10 +35,14 @@ namespace BaiCiZhan.view
 
         void timer_Tick(object sender, EventArgs e)
         {
-            var text = lblSeconds.Text;
+            var text = lblSeconds.Text.Split(' ')[0];
             int seconds;
             int.TryParse(text, out seconds);
-            lblSeconds.Text = (++seconds).ToString();
+            seconds++;
+            var m = seconds / 60;
+            var s = seconds % 60;
+            string msg = string.Format("{0} {1}m{2}s", seconds, m, s);
+            lblSeconds.Text = msg;
         }
 
         void WordView_Load(object sender, EventArgs e)
@@ -121,6 +125,25 @@ namespace BaiCiZhan.view
         private void btnShowSentenc_Click(object sender, EventArgs e)
         {
             rtbSentence.Text = wordInfo.sentence;
+        }
+
+        private void btnPlayWord_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                var file = this.wordInfo.word_audio;
+                Helper.AudioHelper.GetInstance().Play(file);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+
+            }
         }
 
     }

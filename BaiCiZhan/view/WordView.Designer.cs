@@ -36,6 +36,7 @@
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblSeconds = new System.Windows.Forms.Label();
+            this.btnPlayWord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -45,9 +46,9 @@
             this.rtbWrodInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbWrodInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbWrodInfo.Location = new System.Drawing.Point(0, 0);
+            this.rtbWrodInfo.Location = new System.Drawing.Point(0, 32);
             this.rtbWrodInfo.Name = "rtbWrodInfo";
-            this.rtbWrodInfo.Size = new System.Drawing.Size(474, 193);
+            this.rtbWrodInfo.Size = new System.Drawing.Size(474, 161);
             this.rtbWrodInfo.TabIndex = 0;
             this.rtbWrodInfo.Text = "consoles";
             // 
@@ -117,16 +118,27 @@
             // lblSeconds
             // 
             this.lblSeconds.AutoSize = true;
-            this.lblSeconds.Location = new System.Drawing.Point(10, 199);
+            this.lblSeconds.Location = new System.Drawing.Point(336, 9);
             this.lblSeconds.Name = "lblSeconds";
             this.lblSeconds.Size = new System.Drawing.Size(11, 12);
             this.lblSeconds.TabIndex = 6;
             this.lblSeconds.Text = "0";
             // 
+            // btnPlayWord
+            // 
+            this.btnPlayWord.Location = new System.Drawing.Point(9, 4);
+            this.btnPlayWord.Name = "btnPlayWord";
+            this.btnPlayWord.Size = new System.Drawing.Size(75, 23);
+            this.btnPlayWord.TabIndex = 7;
+            this.btnPlayWord.Text = "播放单词";
+            this.btnPlayWord.UseVisualStyleBackColor = true;
+            this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
+            // 
             // WordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnPlayWord);
             this.Controls.Add(this.lblSeconds);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
@@ -150,6 +162,7 @@
         public System.Windows.Forms.Button btnAudio;
         public System.Windows.Forms.Button btnShowSentenc;
         private System.Windows.Forms.Label lblSeconds;
+        private System.Windows.Forms.Button btnPlayWord;
 
     }
 }

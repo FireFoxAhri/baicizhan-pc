@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaiCiZhan.Model;
-using Un4seen.Bass;
 
 using BaiCiZhan.Helper;
 
@@ -35,14 +34,15 @@ namespace BaiCiZhan.view
 
         void timer_Tick(object sender, EventArgs e)
         {
-            var text = lblSeconds.Text.Split(' ')[0];
+            var text = Convert.ToString(lblSeconds.Tag);
             int seconds;
             int.TryParse(text, out seconds);
             seconds++;
             var m = seconds / 60;
             var s = seconds % 60;
-            string msg = string.Format("{0} {1}m{2}s", seconds, m, s);
+            string msg = string.Format("{0}s [{1}m{2}s]", seconds, m, s);
             lblSeconds.Text = msg;
+            lblSeconds.Tag = seconds;
         }
 
         void WordView_Load(object sender, EventArgs e)
@@ -59,16 +59,13 @@ namespace BaiCiZhan.view
 
         public void ShowWordInfo(WordInfo wordInfo)
         {
-            if (Helper.AudioHelper.GetInstance().isPlaying)
-            {
-                return;
-            }
             //清理;
             rtbWrodInfo.Text = "";
             rtbSentence.Text = "";
             rtbInputSentence.Text = "";
             pictureBox1.BackgroundImage = null;
-            lblSeconds.Text = "0";
+            lblSeconds.Text = "";
+            lblSeconds.Tag = 0;
             this.timer.Stop();
 
             //添加历史记录
@@ -98,7 +95,7 @@ namespace BaiCiZhan.view
             rtbWrodInfo.Text = msg;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
-            Helper.AudioHelper.GetInstance().Play(wordInfo.word_audio, () =>
+            Factory.GetAudioPlayer().Play(wordInfo.word_audio, () =>
             {
                 this.Invoke((MethodInvoker)delegate
                 {
@@ -116,7 +113,7 @@ namespace BaiCiZhan.view
                 btnAudio.Text = "播放中";
                 btnAudio.Refresh();
                 var file = this.wordInfo.sentence_audio;
-                Helper.AudioHelper.GetInstance().Play(file);
+                Factory.GetAudioPlayer().Play(file);
                 rtbInputSentence.Select();
 
             }
@@ -141,7 +138,7 @@ namespace BaiCiZhan.view
             try
             {
                 var file = this.wordInfo.word_audio;
-                Helper.AudioHelper.GetInstance().Play(file);
+                Factory.GetAudioPlayer().Play(file);
 
             }
             catch (Exception ex)

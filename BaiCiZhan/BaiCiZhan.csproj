@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bass.Net, Version=2.4.12.3, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bass.NetWrapper.2.4.12.5\lib\net45\Bass.Net.dll</HintPath>
+    <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAudioTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAudioTest.Designer.cs">
+      <DependentUpon>frmAudioTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmExtractor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,7 +81,9 @@
     <Compile Include="frmStudy.Designer.cs">
       <DependentUpon>frmStudy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\AudioHelper.cs" />
+    <Compile Include="Helper\AudioPlayer2.cs" />
+    <Compile Include="Helper\Factory.cs" />
+    <Compile Include="Helper\IAudioPlayer.cs" />
     <Compile Include="Helper\WordHelper.cs" />
     <Compile Include="Helper\HistoryHelper.cs" />
     <Compile Include="Helper\ZPKExtractor.cs" />
@@ -120,7 +128,6 @@
     <EmbeddedResource Include="view\WordView.resx">
       <DependentUpon>WordView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Help\BassNet.chm" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

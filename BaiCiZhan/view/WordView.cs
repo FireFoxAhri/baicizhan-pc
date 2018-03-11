@@ -134,6 +134,11 @@ _   {0}  {1}
 
             try
             {
+                if (this.wordInfo == null)
+                {
+                    MessageBox.Show("没有加载单词"); ;
+                    return;
+                }
                 var file = this.wordInfo.word_audio;
                 Factory.GetAudioPlayer().Play(file);
 

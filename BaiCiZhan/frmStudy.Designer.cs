@@ -30,8 +30,8 @@
         {
             this.btnTest = new System.Windows.Forms.Button();
             this.btnLoadWord = new System.Windows.Forms.Button();
-            this.wordList1 = new BaiCiZhan.view.WordList();
             this.wordView1 = new BaiCiZhan.view.WordView();
+            this.wordList1 = new BaiCiZhan.view.WordList();
             this.SuspendLayout();
             // 
             // btnTest
@@ -56,6 +56,17 @@
             this.btnLoadWord.Visible = false;
             this.btnLoadWord.Click += new System.EventHandler(this.btnLoadWord_Click);
             // 
+            // wordView1
+            // 
+            this.wordView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wordView1.AutoScroll = true;
+            this.wordView1.Location = new System.Drawing.Point(174, 9);
+            this.wordView1.Name = "wordView1";
+            this.wordView1.Size = new System.Drawing.Size(713, 501);
+            this.wordView1.TabIndex = 3;
+            // 
             // wordList1
             // 
             this.wordList1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -64,17 +75,6 @@
             this.wordList1.Name = "wordList1";
             this.wordList1.Size = new System.Drawing.Size(156, 559);
             this.wordList1.TabIndex = 6;
-            // 
-            // wordView1
-            // 
-            this.wordView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.wordView1.AutoScroll = true;
-            this.wordView1.Location = new System.Drawing.Point(169, 7);
-            this.wordView1.Name = "wordView1";
-            this.wordView1.Size = new System.Drawing.Size(713, 501);
-            this.wordView1.TabIndex = 3;
             // 
             // frmStudy
             // 

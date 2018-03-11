@@ -81,7 +81,6 @@
     <Compile Include="frmStudy.Designer.cs">
       <DependentUpon>frmStudy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\AudioPlayerTest.cs" />
     <Compile Include="Helper\AudioPlayer2.cs" />
     <Compile Include="Helper\Factory.cs" />
     <Compile Include="Helper\IAudioPlayer.cs" />

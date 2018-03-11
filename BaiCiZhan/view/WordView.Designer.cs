@@ -46,12 +46,11 @@
             this.rtbWrodInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbWrodInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbWrodInfo.Location = new System.Drawing.Point(2, 2);
+            this.rtbWrodInfo.Location = new System.Drawing.Point(6, 2);
             this.rtbWrodInfo.Name = "rtbWrodInfo";
             this.rtbWrodInfo.Size = new System.Drawing.Size(311, 174);
             this.rtbWrodInfo.TabIndex = 0;
             this.rtbWrodInfo.Text = "_  consoles";
-            this.rtbWrodInfo.Visible = false;
             // 
             // pictureBox1
             // 
@@ -119,12 +118,11 @@
             // btnPlayWord
             // 
             this.btnPlayWord.Image = global::BaiCiZhan.Properties.Resources.Play;
-            this.btnPlayWord.Location = new System.Drawing.Point(5, 6);
+            this.btnPlayWord.Location = new System.Drawing.Point(9, 6);
             this.btnPlayWord.Name = "btnPlayWord";
             this.btnPlayWord.Size = new System.Drawing.Size(26, 20);
             this.btnPlayWord.TabIndex = 7;
             this.btnPlayWord.UseVisualStyleBackColor = true;
-            this.btnPlayWord.Visible = false;
             this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
             // 
             // ucAudioPlayer1

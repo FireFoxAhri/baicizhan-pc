@@ -14,9 +14,10 @@ namespace BaiCiZhan.view
 {
     public partial class ucAudioPlayer : UserControl
     {
-        string file = @"D:\资料\百词斩数据文件\单词\1_解压\abandon\sa_1_4719_0_6_160123165116.aac";
+        string file = "";
+        //string file = @"D:\资料\百词斩数据文件\单词\1_解压\abandon\sa_1_4719_0_6_160123165116.aac";
         //string file = @"F:\CloudMusic\孟庭苇 - 羞答答的玫瑰静悄悄地开.mp3";
-        Helper.AudioPlayerTest audioPlayer = Helper.AudioPlayerTest.GetInstance();
+        Helper.AudioPlayer2 audioPlayer = Helper.AudioPlayer2.GetInstance();
         public ucAudioPlayer()
         {
             InitializeComponent();
@@ -31,9 +32,14 @@ namespace BaiCiZhan.view
         public void Play(string file)
         {
             this.file = file;
-            if (!File.Exists(file))
+            if (string.IsNullOrEmpty(file))
             {
-                MessageBox.Show("文件不存在:" + file);
+                MessageBox.Show("没有加载文件");
+                return;
+            }
+            if (!System.IO.File.Exists(file))
+            {
+                MessageBox.Show("文件不存在: " + file);
                 return;
             }
             audioPlayer.Play(file);
@@ -70,7 +76,16 @@ namespace BaiCiZhan.view
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Play(this.file);
+            try
+            {
+                Play(this.file);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -92,8 +107,16 @@ namespace BaiCiZhan.view
         //鼠标弹起时才开始播放; 这样便于调整
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
-            int percent = trackBar1.Value;
-            audioPlayer.Play(file, null, percent);
+            try
+            {
+                int percent = trackBar1.Value;
+                audioPlayer.Play(file, null, percent);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         //把游标设置在鼠标单击的地方

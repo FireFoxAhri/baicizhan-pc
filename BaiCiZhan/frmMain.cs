@@ -19,6 +19,12 @@ namespace BaiCiZhan
             this.mdiForms.Add(new MdiForm(typeof(frmExtractor), "解压zpk"));
             this.mdiForms.Add(new MdiForm(typeof(frmStudy), "英语学习"));
             //this.mdiForms.Add(new MdiForm(typeof(frmAudioTest), "audio 测试"));
+            this.Load += frmMain_Load;
+        }
+
+        void frmMain_Load(object sender, EventArgs e)
+        {
+            this.Size = new Size(800, 800);
         }
     }
 

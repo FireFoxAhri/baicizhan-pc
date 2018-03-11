@@ -35,18 +35,27 @@ namespace BaiCiZhan.view
         public WordList()
         {
             InitializeComponent();
+
+            if (this.DesignMode)
+            {
+                return;
+            }
             this.Load += WordList_Load;
             this.tbWord.TextChanged += tbWord_TextChanged;
             this.tbWord.KeyDown += tbWord_KeyDown;
+            this.cboWordSource.SelectedIndexChanged += cboWordSource_SelectedIndexChanged;
+        }
 
+        void WordList_Load(object sender, EventArgs e)
+        {
+            //this.cboWordSource.SelectedIndex = 0;
             List<string> lstSource = Helper.WordHelper.GetWordSources().Select(n => n.Name).ToList();
             lstSource.Add(HISTORY);
             this.cboWordSource.DataSource = lstSource;
-            this.cboWordSource.SelectedIndexChanged += cboWordSource_SelectedIndexChanged;
 
-            wordHelper.SetDataSourceByName(lstSource.First());
+            //wordHelper.SetDataSourceByName(lstSource.First());
+            loadList();
         }
-
         void cboWordSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             tbWord.Text = "";
@@ -102,10 +111,7 @@ namespace BaiCiZhan.view
             loadList();
         }
 
-        void WordList_Load(object sender, EventArgs e)
-        {
-            loadList();
-        }
+
         void loadList()
         {
             try

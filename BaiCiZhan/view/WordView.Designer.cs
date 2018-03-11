@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.rtbWrodInfo = new System.Windows.Forms.RichTextBox();
-            this.btnAudio = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rtbSentence = new System.Windows.Forms.RichTextBox();
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
@@ -37,6 +36,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblSeconds = new System.Windows.Forms.Label();
             this.btnPlayWord = new System.Windows.Forms.Button();
+            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -46,27 +46,19 @@
             this.rtbWrodInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbWrodInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbWrodInfo.Location = new System.Drawing.Point(0, 32);
+            this.rtbWrodInfo.Location = new System.Drawing.Point(2, 2);
             this.rtbWrodInfo.Name = "rtbWrodInfo";
-            this.rtbWrodInfo.Size = new System.Drawing.Size(474, 161);
+            this.rtbWrodInfo.Size = new System.Drawing.Size(311, 174);
             this.rtbWrodInfo.TabIndex = 0;
-            this.rtbWrodInfo.Text = "consoles";
-            // 
-            // btnAudio
-            // 
-            this.btnAudio.Location = new System.Drawing.Point(9, 19);
-            this.btnAudio.Name = "btnAudio";
-            this.btnAudio.Size = new System.Drawing.Size(63, 23);
-            this.btnAudio.TabIndex = 1;
-            this.btnAudio.Text = "播放(C2)";
-            this.btnAudio.UseVisualStyleBackColor = true;
-            this.btnAudio.Click += new System.EventHandler(this.btnAudio_Click);
+            this.rtbWrodInfo.Text = "_  consoles";
+            this.rtbWrodInfo.Visible = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(9, 199);
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Location = new System.Drawing.Point(322, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(459, 174);
+            this.pictureBox1.Size = new System.Drawing.Size(198, 174);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -74,9 +66,9 @@
             // 
             this.rtbSentence.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbSentence.Location = new System.Drawing.Point(6, 136);
+            this.rtbSentence.Location = new System.Drawing.Point(4, 151);
             this.rtbSentence.Name = "rtbSentence";
-            this.rtbSentence.Size = new System.Drawing.Size(459, 82);
+            this.rtbSentence.Size = new System.Drawing.Size(518, 82);
             this.rtbSentence.TabIndex = 3;
             this.rtbSentence.Text = "";
             // 
@@ -84,17 +76,17 @@
             // 
             this.rtbInputSentence.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbInputSentence.Location = new System.Drawing.Point(6, 49);
+            this.rtbInputSentence.Location = new System.Drawing.Point(4, 58);
             this.rtbInputSentence.Name = "rtbInputSentence";
-            this.rtbInputSentence.Size = new System.Drawing.Size(459, 79);
+            this.rtbInputSentence.Size = new System.Drawing.Size(518, 79);
             this.rtbInputSentence.TabIndex = 3;
             this.rtbInputSentence.Text = "";
             // 
             // btnShowSentenc
             // 
-            this.btnShowSentenc.Location = new System.Drawing.Point(78, 20);
+            this.btnShowSentenc.Location = new System.Drawing.Point(436, 21);
             this.btnShowSentenc.Name = "btnShowSentenc";
-            this.btnShowSentenc.Size = new System.Drawing.Size(75, 23);
+            this.btnShowSentenc.Size = new System.Drawing.Size(62, 23);
             this.btnShowSentenc.TabIndex = 4;
             this.btnShowSentenc.Text = "显示(C3)";
             this.btnShowSentenc.UseVisualStyleBackColor = true;
@@ -104,13 +96,13 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.ucAudioPlayer1);
             this.groupBox1.Controls.Add(this.btnShowSentenc);
-            this.groupBox1.Controls.Add(this.btnAudio);
             this.groupBox1.Controls.Add(this.rtbInputSentence);
             this.groupBox1.Controls.Add(this.rtbSentence);
-            this.groupBox1.Location = new System.Drawing.Point(3, 379);
+            this.groupBox1.Location = new System.Drawing.Point(-1, 195);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 224);
+            this.groupBox1.Size = new System.Drawing.Size(530, 258);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
@@ -118,7 +110,7 @@
             // lblSeconds
             // 
             this.lblSeconds.AutoSize = true;
-            this.lblSeconds.Location = new System.Drawing.Point(336, 9);
+            this.lblSeconds.Location = new System.Drawing.Point(5, 456);
             this.lblSeconds.Name = "lblSeconds";
             this.lblSeconds.Size = new System.Drawing.Size(11, 12);
             this.lblSeconds.TabIndex = 6;
@@ -126,13 +118,21 @@
             // 
             // btnPlayWord
             // 
-            this.btnPlayWord.Location = new System.Drawing.Point(9, 4);
+            this.btnPlayWord.Image = global::BaiCiZhan.Properties.Resources.Play;
+            this.btnPlayWord.Location = new System.Drawing.Point(5, 6);
             this.btnPlayWord.Name = "btnPlayWord";
-            this.btnPlayWord.Size = new System.Drawing.Size(75, 23);
+            this.btnPlayWord.Size = new System.Drawing.Size(26, 20);
             this.btnPlayWord.TabIndex = 7;
-            this.btnPlayWord.Text = "播放单词";
             this.btnPlayWord.UseVisualStyleBackColor = true;
+            this.btnPlayWord.Visible = false;
             this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
+            // 
+            // ucAudioPlayer1
+            // 
+            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
+            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
+            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
+            this.ucAudioPlayer1.TabIndex = 8;
             // 
             // WordView
             // 
@@ -144,7 +144,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rtbWrodInfo);
             this.Name = "WordView";
-            this.Size = new System.Drawing.Size(477, 619);
+            this.Size = new System.Drawing.Size(536, 494);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -159,10 +159,10 @@
         private System.Windows.Forms.RichTextBox rtbSentence;
         private System.Windows.Forms.RichTextBox rtbInputSentence;
         private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.Button btnAudio;
         public System.Windows.Forms.Button btnShowSentenc;
         private System.Windows.Forms.Label lblSeconds;
         private System.Windows.Forms.Button btnPlayWord;
+        private ucAudioPlayer ucAudioPlayer1;
 
     }
 }

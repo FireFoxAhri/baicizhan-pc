@@ -30,6 +30,12 @@ namespace BaiCiZhan.view
             this.Load += WordView_Load;
             timer.Tick += timer_Tick;
             timer.Interval = 1000;
+            ucAudioPlayer1.btnPlay.Click += btnPlay_Click;
+        }
+
+        void btnPlay_Click(object sender, EventArgs e)
+        {
+            rtbInputSentence.Select();
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -87,8 +93,7 @@ namespace BaiCiZhan.view
             this.timer.Start();
             this.wordInfo = wordInfo;
             var msg = string.Format(@"
-{0}
-{1}
+_   {0}  {1}
 {2}
 {3}
 ", wordInfo.word, wordInfo.accent, wordInfo.word_etyma, wordInfo.mean_cn).Trim();
@@ -99,32 +104,24 @@ namespace BaiCiZhan.view
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    btnAudio.PerformClick();
+                    playSentence();
                 });
-
             });
         }
 
-        private void btnAudio_Click(object sender, EventArgs e)
+        public void playSentence()
         {
-            var text = btnAudio.Text;
             try
             {
-                btnAudio.Text = "播放中";
-                btnAudio.Refresh();
-                var file = this.wordInfo.sentence_audio;
-                Factory.GetAudioPlayer().Play(file);
-                rtbInputSentence.Select();
-
+            ucAudioPlayer1.Play(wordInfo.sentence_audio);
+            rtbInputSentence.Select();
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                btnAudio.Text = text;
-            }
+
         }
 
         private void btnShowSentenc_Click(object sender, EventArgs e)

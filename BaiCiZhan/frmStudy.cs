@@ -27,7 +27,9 @@ namespace BaiCiZhan
 
         void ListBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            
+            //if (e.KeyCode == Keys.Enter)
+            if (e.KeyValue == 13) //todo: 2018-03-11上面的判断出问题了,先用这个; keycode lbutton|mbutton|back
             {
                 btnLoadWord.PerformClick();
             }

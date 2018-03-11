@@ -47,13 +47,12 @@
             // 
             // btnLoadWord
             // 
-            this.btnLoadWord.Location = new System.Drawing.Point(181, 516);
+            this.btnLoadWord.Location = new System.Drawing.Point(212, 487);
             this.btnLoadWord.Name = "btnLoadWord";
             this.btnLoadWord.Size = new System.Drawing.Size(75, 23);
             this.btnLoadWord.TabIndex = 4;
             this.btnLoadWord.Text = "加载单词";
             this.btnLoadWord.UseVisualStyleBackColor = true;
-            this.btnLoadWord.Visible = false;
             this.btnLoadWord.Click += new System.EventHandler(this.btnLoadWord_Click);
             // 
             // wordView1

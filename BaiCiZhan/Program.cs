@@ -23,7 +23,7 @@ namespace BaiCiZhan
 
         static void Application_ApplicationExit(object sender, EventArgs e)
         {
-            Factory.GetAudioPlayer().Close();
+
         }
     }
 }

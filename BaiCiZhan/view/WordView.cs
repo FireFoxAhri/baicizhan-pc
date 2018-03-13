@@ -24,6 +24,7 @@ namespace BaiCiZhan.view
         }
         WordInfo wordInfo;
         Timer timer = new Timer();
+        Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
         public WordView()
         {
             InitializeComponent();
@@ -31,6 +32,12 @@ namespace BaiCiZhan.view
             timer.Tick += timer_Tick;
             timer.Interval = 1000;
             ucAudioPlayer1.btnPlay.Click += btnPlay_Click;
+            this.Disposed += WordView_Disposed;
+        }
+
+        void WordView_Disposed(object sender, EventArgs e)
+        {
+            audioPlayer.Close();
         }
 
         void btnPlay_Click(object sender, EventArgs e)
@@ -100,7 +107,7 @@ _   {0}  {1}
             rtbWrodInfo.Text = msg;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
-            Factory.GetAudioPlayer().Play(wordInfo.word_audio, () =>
+            audioPlayer.Play(wordInfo.word_audio, () =>
             {
                 this.Invoke((MethodInvoker)delegate
                 {
@@ -113,8 +120,8 @@ _   {0}  {1}
         {
             try
             {
-            ucAudioPlayer1.Play(wordInfo.sentence_audio);
-            rtbInputSentence.Select();
+                ucAudioPlayer1.Play(wordInfo.sentence_audio);
+                rtbInputSentence.Select();
             }
             catch (Exception ex)
             {
@@ -140,7 +147,7 @@ _   {0}  {1}
                     return;
                 }
                 var file = this.wordInfo.word_audio;
-                Factory.GetAudioPlayer().Play(file);
+                audioPlayer.Play(file);
 
             }
             catch (Exception ex)

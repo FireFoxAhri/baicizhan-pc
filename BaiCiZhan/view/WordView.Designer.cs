@@ -48,16 +48,16 @@
             this.rtbWrodInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbWrodInfo.Location = new System.Drawing.Point(6, 2);
             this.rtbWrodInfo.Name = "rtbWrodInfo";
-            this.rtbWrodInfo.Size = new System.Drawing.Size(311, 174);
+            this.rtbWrodInfo.Size = new System.Drawing.Size(287, 174);
             this.rtbWrodInfo.TabIndex = 0;
             this.rtbWrodInfo.Text = "_  consoles";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(322, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(302, 8);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 174);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 165);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 

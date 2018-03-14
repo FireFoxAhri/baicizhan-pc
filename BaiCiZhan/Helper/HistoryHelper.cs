@@ -16,7 +16,7 @@ namespace BaiCiZhan.Helper
 
     public class HistoryHelper : IHistoryHelper
     {
-        const string DATA_DIR = "DATA";
+        readonly string DATA_DIR;
         const string HISTORY_FILE = @"HISTORY_FILE.TXT";
         string historyFile
         {
@@ -25,6 +25,20 @@ namespace BaiCiZhan.Helper
                 createFile();
                 return Path.Combine(DATA_DIR, HISTORY_FILE);
             }
+        }
+        public HistoryHelper()
+        {
+            var key = "DATA_DIR";
+            string dir = System.Configuration.ConfigurationManager.AppSettings[key];
+            if (!string.IsNullOrEmpty(dir))
+            {
+                DATA_DIR = dir;
+            }
+            else
+            {
+                DATA_DIR = "data";
+            }
+
         }
         public void Add(WordInfo word)
         {
@@ -39,13 +53,20 @@ namespace BaiCiZhan.Helper
         {
             if (!Directory.Exists(DATA_DIR))
             {
-                Directory.CreateDirectory(DATA_DIR);
-            }
+                try
+                {
+                    Directory.CreateDirectory(DATA_DIR);
+                }
+                catch (Exception ex)
+                {
+                    throw new IOException("创建数据文件夹错误 -> " + DATA_DIR + " -> " + ex.Message);
+                }
 
+            }
             var path = Path.Combine(DATA_DIR, HISTORY_FILE);
             if (!File.Exists(path))
             {
-                File.WriteAllText(path,"");
+                File.WriteAllText(path, "");
             }
         }
 

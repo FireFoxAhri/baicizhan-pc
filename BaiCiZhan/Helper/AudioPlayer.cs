@@ -9,6 +9,9 @@ namespace BaiCiZhan.Helper
 {
     public class AudioPlayer : IAudioPlayer
     {
+
+        #region 字段/属性
+
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
 
@@ -24,8 +27,10 @@ namespace BaiCiZhan.Helper
                 _isPlaying = value;
             }
         }
-        private Action<AudioFileReader> _playTimeChanged;
+        Action action = null;
+        System.Timers.Timer timer;
 
+        private Action<AudioFileReader> _playTimeChanged;
         public event Action<AudioFileReader> PlayTimeChanged
         {
             add
@@ -42,16 +47,14 @@ namespace BaiCiZhan.Helper
             remove
             {
                 _playTimeChanged -= value;
-                if (_playTimeChanged == null)
+                if (_playTimeChanged == null && timer != null)
                 {
                     timer.Stop();
                     timer.Dispose();
                 }
             }
         }
-        //是否在播放中被强制停止; 被强制停止的播放结束后的事件不触发;
-        bool isForseStop = false;
-        System.Timers.Timer timer;
+
 
         //单实例用不成, 因为PlayTimeChanged的问题, 一个位置注册, 各个位置都会被触发;
         #region 单实例
@@ -66,41 +69,12 @@ namespace BaiCiZhan.Helper
         //    return _instance;
         //}
         #endregion
+        #endregion
 
         public AudioPlayer()
         {
         }
 
-        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (IsPlaying && audioFile != null && outputDevice.PlaybackState == PlaybackState.Playing)
-            {
-                if (_playTimeChanged != null)
-                {
-                    _playTimeChanged(audioFile);
-                }
-            }
-        }
-        public void Close()
-        {
-            //todo: 出问题了
-            if (this.IsPlaying)
-            {
-                this.isForseStop = true;
-            }
-            this.IsPlaying = false;
-            if (outputDevice != null)
-            {
-                outputDevice.Dispose();
-            }
-            outputDevice = null;
-
-            if (audioFile != null)
-            {
-                audioFile.Dispose();
-            }
-            audioFile = null;
-        }
 
         public void Play(string file, Action action = null, int percent = 0)
         {
@@ -120,21 +94,11 @@ namespace BaiCiZhan.Helper
             if (outputDevice == null)
             {
                 outputDevice = new WaveOutEvent();
-                outputDevice.PlaybackStopped += (a, b) =>
+                if (action != null)
                 {
-                    //todo: 直接跳过也不是很合理;
-                    //解决播放A时播放B无法播放; 因为停止A时会再调用这个方法里的close();
-                    if (isForseStop)
-                    {
-                        this.isForseStop = false;
-                        return;
-                    }
-                    this.Close();
-                    if (action != null)
-                    {
-                        action();
-                    }
-                };
+                    this.action = action;
+                    outputDevice.PlaybackStopped += outputDevice_PlaybackStopped;
+                }
             }
 
             if (audioFile == null)
@@ -148,5 +112,43 @@ namespace BaiCiZhan.Helper
             outputDevice.Play();
         }
 
+        public void Close()
+        {
+            this.IsPlaying = false;
+            if (outputDevice != null)
+            {
+                //要把事件清除掉, 不然dispose后会调用
+                //todo: 直接清除可能也不是很合理;
+                this.outputDevice.PlaybackStopped -= outputDevice_PlaybackStopped;
+                this.outputDevice.Dispose();
+            }
+            this.outputDevice = null;
+
+            if (this.audioFile != null)
+            {
+                this.audioFile.Dispose();
+            }
+            this.audioFile = null;
+        }
+
+        void outputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            this.Close();
+            if (action != null)
+            {
+                action();
+            }
+        }
+
+        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (IsPlaying && audioFile != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            {
+                if (_playTimeChanged != null)
+                {
+                    _playTimeChanged(audioFile);
+                }
+            }
+        }
     }
 }

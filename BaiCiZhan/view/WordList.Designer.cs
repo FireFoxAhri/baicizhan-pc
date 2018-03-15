@@ -38,7 +38,7 @@
             this.tbWord.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbWord.Location = new System.Drawing.Point(2, 4);
             this.tbWord.Name = "tbWord";
-            this.tbWord.Size = new System.Drawing.Size(145, 22);
+            this.tbWord.Size = new System.Drawing.Size(148, 22);
             this.tbWord.TabIndex = 1;
             // 
             // cboWordSource
@@ -49,9 +49,9 @@
             this.cboWordSource.Items.AddRange(new object[] {
             "四级单词",
             "历史记录"});
-            this.cboWordSource.Location = new System.Drawing.Point(6, 492);
+            this.cboWordSource.Location = new System.Drawing.Point(1, 486);
             this.cboWordSource.Name = "cboWordSource";
-            this.cboWordSource.Size = new System.Drawing.Size(139, 20);
+            this.cboWordSource.Size = new System.Drawing.Size(149, 20);
             this.cboWordSource.TabIndex = 2;
             // 
             // listView1
@@ -61,9 +61,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.FormattingEnabled = true;
-            this.listView1.Location = new System.Drawing.Point(2, 30);
+            this.listView1.Location = new System.Drawing.Point(2, 33);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(145, 459);
+            this.listView1.Size = new System.Drawing.Size(149, 446);
             this.listView1.TabIndex = 0;
             // 
             // WordList
@@ -74,7 +74,7 @@
             this.Controls.Add(this.tbWord);
             this.Controls.Add(this.listView1);
             this.Name = "WordList";
-            this.Size = new System.Drawing.Size(156, 523);
+            this.Size = new System.Drawing.Size(156, 510);
             this.ResumeLayout(false);
             this.PerformLayout();
 

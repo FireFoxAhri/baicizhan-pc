@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="data\HISTORY_FILE.TXT" />
     <Content Include="data\Screenshot_2018-02-06-21-53-34.jpg" />
     <None Include="Resources\Stop.png" />
     <None Include="Resources\Shuffle.png" />

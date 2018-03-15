@@ -78,6 +78,13 @@ namespace BaiCiZhan.Helper
 
         public void Play(string file, Action action = null, int percent = 0)
         {
+            //如果是pause状态, 继续播放
+            if (this.outputDevice != null && this.outputDevice.PlaybackState == PlaybackState.Paused)
+            {
+                this.outputDevice.Play();
+                return;
+            }
+
             if (string.IsNullOrEmpty(file))
             {
                 throw new ArgumentNullException("文件路径");
@@ -110,8 +117,27 @@ namespace BaiCiZhan.Helper
                 outputDevice.Init(audioFile);
             }
             outputDevice.Play();
+            if (_playTimeChanged != null)
+            {
+                _playTimeChanged(audioFile);
+            }
         }
 
+        public void Pause()
+        {
+            if (outputDevice != null)
+            {
+                if (outputDevice.PlaybackState == PlaybackState.Paused)
+                {
+                    outputDevice.Play();
+                }
+                else if (outputDevice.PlaybackState == PlaybackState.Playing)
+                {
+                    outputDevice.Pause();
+                }
+            }
+
+        }
         public void Close()
         {
             this.IsPlaying = false;

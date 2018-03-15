@@ -37,16 +37,10 @@ namespace BaiCiZhan.view
             audioPlayer.Close();
         }
 
-        void trackBar1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                audioPlayer.Close();
-            }
-        }
 
         public void Play(string file)
         {
+
             this.file = file;
             if (string.IsNullOrEmpty(file))
             {
@@ -59,7 +53,6 @@ namespace BaiCiZhan.view
                 return;
             }
             audioPlayer.Play(file);
-            trackBar1.Value = trackBar1.Minimum;
         }
 
         void audioPlayer_PlayTimeChanged(AudioFileReader audioFile)
@@ -90,6 +83,8 @@ namespace BaiCiZhan.view
             }));
         }
 
+        #region 按钮事件
+
         private void btnPlay_Click(object sender, EventArgs e)
         {
             try
@@ -104,12 +99,27 @@ namespace BaiCiZhan.view
 
         }
 
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            audioPlayer.Pause();
+        }
+
         private void btnStop_Click(object sender, EventArgs e)
         {
             trackBar1.Value = trackBar1.Minimum;
             audioPlayer.Close();
         }
 
+        #endregion
+
+        #region trackbar事件
+        void trackBar1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                audioPlayer.Pause();
+            }
+        }
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
         }
@@ -145,6 +155,8 @@ namespace BaiCiZhan.view
 
             trackBar1.Value = Convert.ToInt32(dblValue);
         }
+
+        #endregion
 
 
     }

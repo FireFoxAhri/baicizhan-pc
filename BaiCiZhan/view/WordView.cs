@@ -23,14 +23,13 @@ namespace BaiCiZhan.view
             }
         }
         WordInfo wordInfo;
-        Timer timer = new Timer();
+
         Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
         public WordView()
         {
             InitializeComponent();
             this.Load += WordView_Load;
-            timer.Tick += timer_Tick;
-            timer.Interval = 1000;
+
             ucAudioPlayer1.btnPlay.Click += btnPlay_Click;
             this.Disposed += WordView_Disposed;
         }
@@ -43,19 +42,6 @@ namespace BaiCiZhan.view
         void btnPlay_Click(object sender, EventArgs e)
         {
             rtbInputSentence.Select();
-        }
-
-        void timer_Tick(object sender, EventArgs e)
-        {
-            var text = Convert.ToString(lblSeconds.Tag);
-            int seconds;
-            int.TryParse(text, out seconds);
-            seconds++;
-            var m = seconds / 60;
-            var s = seconds % 60;
-            string msg = string.Format("{0}s [{1}m{2}s]", seconds, m, s);
-            lblSeconds.Text = msg;
-            lblSeconds.Tag = seconds;
         }
 
         void WordView_Load(object sender, EventArgs e)
@@ -77,9 +63,6 @@ namespace BaiCiZhan.view
             rtbSentence.Text = "";
             rtbInputSentence.Text = "";
             pictureBox1.BackgroundImage = null;
-            lblSeconds.Text = "";
-            lblSeconds.Tag = 0;
-            this.timer.Stop();
 
             //添加历史记录
             IHistoryHelper helper = new HistoryHelper();
@@ -97,7 +80,6 @@ namespace BaiCiZhan.view
                 helper.Add(wordInfo);
             }
 
-            this.timer.Start();
             this.wordInfo = wordInfo;
             var msg = string.Format(@"
 _   {0}  {1}

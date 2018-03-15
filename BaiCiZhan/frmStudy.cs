@@ -15,6 +15,7 @@ namespace BaiCiZhan
 {
     public partial class frmStudy : Form
     {
+        Timer timer;
         public frmStudy()
         {
             InitializeComponent();
@@ -23,11 +24,36 @@ namespace BaiCiZhan
 
             this.KeyPreview = true;
             this.KeyDown += frmStudy_KeyDown;
+
+            timer = new Timer();
+            timer.Tick += timer_Tick;
+            timer.Interval = 1000;
         }
 
+        void timer_Tick(object sender, EventArgs e)
+        {
+            var lblSeconds = toolStripStatusLabel2;
+            var text = Convert.ToString(lblSeconds.Tag);
+            int seconds;
+            int.TryParse(text, out seconds);
+            seconds++;
+            var m = seconds / 60;
+            var s = seconds % 60;
+            string msg = string.Format(" {0}s [{1:00}:{2:00}]", seconds, m, s);
+            lblSeconds.Text = msg;
+            lblSeconds.Tag = seconds;
+        }
+
+        void resetWordLoad()
+        {
+            timer.Stop();
+            timer.Start();
+            toolStripStatusLabel2.Text = "";
+            toolStripStatusLabel2.Tag = 0;
+        }
         void ListBox_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             //if (e.KeyCode == Keys.Enter)
             if (e.KeyValue == 13) //todo: 2018-03-11上面的判断出问题了,先用这个; keycode lbutton|mbutton|back
             {
@@ -70,6 +96,7 @@ namespace BaiCiZhan
         {
             try
             {
+                this.Cursor = Cursors.WaitCursor;
                 var word = wordList1.GetSelectWrod();
                 if (word == null)
                 {
@@ -77,15 +104,33 @@ namespace BaiCiZhan
                     return;
                 }
                 wordView1.ShowWordInfo(word);
+                showMsg1(word.word);
+                resetWordLoad();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Arrow;
             }
 
         }
 
-
+        void showMsg1(string msg)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.toolStripStatusLabel1.Text = msg;
+            });
+        }
+        void showMsg2(string msg)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.toolStripStatusLabel2.Text = msg;
+            });
+        }
     }
 }

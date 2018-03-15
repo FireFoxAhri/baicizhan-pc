@@ -32,6 +32,7 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             // 
             this.lblCurrentTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentTime.AutoSize = true;
-            this.lblCurrentTime.Location = new System.Drawing.Point(268, 13);
+            this.lblCurrentTime.Location = new System.Drawing.Point(295, 13);
             this.lblCurrentTime.Name = "lblCurrentTime";
             this.lblCurrentTime.Size = new System.Drawing.Size(23, 12);
             this.lblCurrentTime.TabIndex = 7;
@@ -49,17 +50,17 @@
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(74, 2);
+            this.trackBar1.Location = new System.Drawing.Point(98, 2);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(196, 45);
+            this.trackBar1.Size = new System.Drawing.Size(197, 45);
             this.trackBar1.TabIndex = 6;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // btnStop
             // 
             this.btnStop.Image = global::BaiCiZhan.Properties.Resources.Stop;
-            this.btnStop.Location = new System.Drawing.Point(43, 2);
+            this.btnStop.Location = new System.Drawing.Point(69, 2);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(25, 23);
             this.btnStop.TabIndex = 4;
@@ -69,23 +70,34 @@
             // btnPlay
             // 
             this.btnPlay.Image = global::BaiCiZhan.Properties.Resources.Play;
-            this.btnPlay.Location = new System.Drawing.Point(7, 2);
+            this.btnPlay.Location = new System.Drawing.Point(6, 2);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(27, 23);
+            this.btnPlay.Size = new System.Drawing.Size(25, 23);
             this.btnPlay.TabIndex = 5;
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
+            // btnPause
+            // 
+            this.btnPause.Image = global::BaiCiZhan.Properties.Resources.Pause;
+            this.btnPause.Location = new System.Drawing.Point(39, 2);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(25, 23);
+            this.btnPause.TabIndex = 8;
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // ucAudioPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnPause);
             this.Controls.Add(this.lblCurrentTime);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnPlay);
             this.Name = "ucAudioPlayer";
-            this.Size = new System.Drawing.Size(305, 39);
+            this.Size = new System.Drawing.Size(332, 39);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -98,5 +110,6 @@
         private System.Windows.Forms.TrackBar trackBar1;
         internal System.Windows.Forms.Button btnStop;
         internal System.Windows.Forms.Button btnPlay;
+        internal System.Windows.Forms.Button btnPause;
     }
 }

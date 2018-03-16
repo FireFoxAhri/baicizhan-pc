@@ -15,39 +15,56 @@ namespace BaiCiZhan
 {
     public partial class frmStudy : Form
     {
+        DateTime loadTime;
         Timer timer;
         public frmStudy()
         {
             InitializeComponent();
             this.wordList1.WordListBox.DoubleClick += ListBox_DoubleClick;
             this.wordList1.WordListBox.KeyDown += ListBox_KeyDown;
+            this.wordView1.Enabled = false;
 
             this.KeyPreview = true;
             this.KeyDown += frmStudy_KeyDown;
+            this.Load += frmStudy_Load;
 
             timer = new Timer();
             timer.Tick += timer_Tick;
             timer.Interval = 1000;
+
+        }
+
+        void frmStudy_Load(object sender, EventArgs e)
+        {
+            timer.Start();
+            this.loadTime = DateTime.Now;
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
-            var lblSeconds = toolStripStatusLabel2;
-            var text = Convert.ToString(lblSeconds.Tag);
-            int seconds;
-            int.TryParse(text, out seconds);
-            seconds++;
-            var m = seconds / 60;
-            var s = seconds % 60;
-            string msg = string.Format(" {0}s [{1:00}:{2:00}]", seconds, m, s);
-            lblSeconds.Text = msg;
-            lblSeconds.Tag = seconds;
+            if (this.wordView1.Enabled)
+            {
+                var lblSeconds = toolStripStatusLabel2;
+                var text = Convert.ToString(lblSeconds.Tag);
+                int seconds;
+                int.TryParse(text, out seconds);
+                seconds++;
+                var m = seconds / 60;
+                var s = seconds % 60;
+
+                string msg = string.Format(" {0}s [{1:00}:{2:00}]", seconds, m, s);
+                lblSeconds.Text = msg;
+                lblSeconds.Tag = seconds;
+            }
+
+            var timeSpand = DateTime.Now.Subtract(loadTime);
+            toolStripStatusLabel3.Text = timeSpand.ToString(@"hh\:mm\:ss") + " ";
         }
 
         void resetWordLoad()
         {
-            timer.Stop();
-            timer.Start();
+            //timer.Stop();
+            //timer.Start();
             toolStripStatusLabel2.Text = "";
             toolStripStatusLabel2.Tag = 0;
         }
@@ -102,6 +119,10 @@ namespace BaiCiZhan
                 {
                     MessageBox.Show("没有选中单词");
                     return;
+                }
+                if (wordView1.Enabled == false)
+                {
+                    wordView1.Enabled = true;
                 }
                 wordView1.ShowWordInfo(word);
                 showMsg1(word.word);

@@ -34,8 +34,9 @@
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             this.btnPlayWord = new System.Windows.Forms.Button();
+            this.cbTranslate = new System.Windows.Forms.CheckBox();
+            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,14 +48,14 @@
             this.rtbWrodInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbWrodInfo.Location = new System.Drawing.Point(6, 2);
             this.rtbWrodInfo.Name = "rtbWrodInfo";
-            this.rtbWrodInfo.Size = new System.Drawing.Size(287, 174);
+            this.rtbWrodInfo.Size = new System.Drawing.Size(404, 174);
             this.rtbWrodInfo.TabIndex = 0;
             this.rtbWrodInfo.Text = "_  consoles";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(302, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(419, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 165);
             this.pictureBox1.TabIndex = 2;
@@ -66,7 +67,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbSentence.Location = new System.Drawing.Point(4, 151);
             this.rtbSentence.Name = "rtbSentence";
-            this.rtbSentence.Size = new System.Drawing.Size(518, 82);
+            this.rtbSentence.Size = new System.Drawing.Size(635, 82);
             this.rtbSentence.TabIndex = 3;
             this.rtbSentence.Text = "";
             // 
@@ -76,13 +77,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbInputSentence.Location = new System.Drawing.Point(4, 58);
             this.rtbInputSentence.Name = "rtbInputSentence";
-            this.rtbInputSentence.Size = new System.Drawing.Size(518, 79);
+            this.rtbInputSentence.Size = new System.Drawing.Size(635, 79);
             this.rtbInputSentence.TabIndex = 3;
             this.rtbInputSentence.Text = "";
             // 
             // btnShowSentenc
             // 
-            this.btnShowSentenc.Location = new System.Drawing.Point(436, 21);
+            this.btnShowSentenc.Location = new System.Drawing.Point(433, 21);
             this.btnShowSentenc.Name = "btnShowSentenc";
             this.btnShowSentenc.Size = new System.Drawing.Size(62, 23);
             this.btnShowSentenc.TabIndex = 4;
@@ -94,23 +95,17 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cbTranslate);
             this.groupBox1.Controls.Add(this.ucAudioPlayer1);
             this.groupBox1.Controls.Add(this.btnShowSentenc);
             this.groupBox1.Controls.Add(this.rtbInputSentence);
             this.groupBox1.Controls.Add(this.rtbSentence);
             this.groupBox1.Location = new System.Drawing.Point(-1, 195);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(530, 258);
+            this.groupBox1.Size = new System.Drawing.Size(647, 258);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
-            // 
-            // ucAudioPlayer1
-            // 
-            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
-            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
-            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
-            this.ucAudioPlayer1.TabIndex = 8;
             // 
             // btnPlayWord
             // 
@@ -122,6 +117,23 @@
             this.btnPlayWord.UseVisualStyleBackColor = true;
             this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
             // 
+            // cbTranslate
+            // 
+            this.cbTranslate.AutoSize = true;
+            this.cbTranslate.Location = new System.Drawing.Point(501, 26);
+            this.cbTranslate.Name = "cbTranslate";
+            this.cbTranslate.Size = new System.Drawing.Size(48, 16);
+            this.cbTranslate.TabIndex = 9;
+            this.cbTranslate.Text = "翻译";
+            this.cbTranslate.UseVisualStyleBackColor = true;
+            // 
+            // ucAudioPlayer1
+            // 
+            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
+            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
+            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
+            this.ucAudioPlayer1.TabIndex = 8;
+            // 
             // WordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -131,9 +143,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rtbWrodInfo);
             this.Name = "WordView";
-            this.Size = new System.Drawing.Size(536, 494);
+            this.Size = new System.Drawing.Size(653, 494);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -148,6 +161,7 @@
         public System.Windows.Forms.Button btnShowSentenc;
         private System.Windows.Forms.Button btnPlayWord;
         private ucAudioPlayer ucAudioPlayer1;
+        private System.Windows.Forms.CheckBox cbTranslate;
 
     }
 }

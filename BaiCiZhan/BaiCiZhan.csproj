@@ -141,6 +141,7 @@
     <EmbeddedResource Include="view\WordView.resx">
       <DependentUpon>WordView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="data\百词斩背单词.zip" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -161,6 +162,8 @@
   <ItemGroup>
     <Content Include="data\HISTORY_FILE.TXT" />
     <Content Include="data\Screenshot_2018-02-06-21-53-34.jpg" />
+    <Content Include="data\使用说明.png" />
+    <Content Include="data\使用说明.txt" />
     <None Include="Resources\Stop.png" />
     <None Include="Resources\Shuffle.png" />
     <None Include="Resources\Rewind.png" />

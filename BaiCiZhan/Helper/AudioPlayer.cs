@@ -55,31 +55,16 @@ namespace BaiCiZhan.Helper
             }
         }
 
-
-        //单实例用不成, 因为PlayTimeChanged的问题, 一个位置注册, 各个位置都会被触发;
-        #region 单实例
-
-        //static AudioPlayer2 _instance;
-        //public static AudioPlayer2 GetInstance()
-        //{
-        //    if (_instance == null)
-        //    {
-        //        _instance = new AudioPlayer2();
-        //    }
-        //    return _instance;
-        //}
-        #endregion
         #endregion
 
         public AudioPlayer()
         {
         }
 
-
         public void Play(string file, Action action = null, int percent = 0)
         {
             //如果是pause状态, 继续播放
-            if (this.outputDevice != null && this.outputDevice.PlaybackState == PlaybackState.Paused)
+            if (this.outputDevice != null && percent == 0 && this.outputDevice.PlaybackState == PlaybackState.Paused)
             {
                 this.outputDevice.Play();
                 return;

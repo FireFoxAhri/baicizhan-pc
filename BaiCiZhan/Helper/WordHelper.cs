@@ -93,7 +93,7 @@ namespace BaiCiZhan.Helper
         {
             if (!Directory.Exists(wordPath))
             {
-                throw new Exception("单词文件夹不存在, 请在配置文件中正确配置");
+                throw new Exception("单词文件夹不存在, 请在配置文件中正确配置: "+wordPath);
             }
         }
 

@@ -115,7 +115,29 @@ _   {0}  {1}
 
         private void btnShowSentenc_Click(object sender, EventArgs e)
         {
-            rtbSentence.Text = wordInfo.sentence;
+
+            try
+            {
+                if (this.wordInfo == null)
+                {
+                    return;
+                }
+                if (cbTranslate.Checked)
+                {
+                    rtbSentence.Text = wordInfo.sentence+"\r\n"+wordInfo.sentence_trans;
+
+                }
+                else
+                {
+                    rtbSentence.Text = wordInfo.sentence;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnPlayWord_Click(object sender, EventArgs e)

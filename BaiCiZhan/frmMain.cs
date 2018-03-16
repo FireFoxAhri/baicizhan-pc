@@ -24,7 +24,7 @@ namespace BaiCiZhan
 
         void frmMain_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(800, 800);
+            this.Size = new Size(900, 800);
         }
     }
 

@@ -17,7 +17,7 @@ namespace BaiCiZhan.view
         string file = "";
         //string file = @"D:\资料\百词斩数据文件\单词\1_解压\abandon\sa_1_4719_0_6_160123165116.aac";
         //string file = @"F:\CloudMusic\孟庭苇 - 羞答答的玫瑰静悄悄地开.mp3";
-        Helper.AudioPlayer2 audioPlayer = Helper.AudioPlayer2.GetInstance();
+        Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
         public ucAudioPlayer()
         {
             InitializeComponent();
@@ -26,11 +26,21 @@ namespace BaiCiZhan.view
             trackBar1.MouseWheel += trackBar1_MouseWheel;
             trackBar1.MouseUp += trackBar1_MouseUp;
             trackBar1.MouseDown += trackBar1_MouseDown;
+            trackBar1.KeyDown += trackBar1_KeyDown;
+
+            this.Disposed += ucAudioPlayer_Disposed;
 
         }
 
+        void ucAudioPlayer_Disposed(object sender, EventArgs e)
+        {
+            audioPlayer.Close();
+        }
+
+
         public void Play(string file)
         {
+
             this.file = file;
             if (string.IsNullOrEmpty(file))
             {
@@ -43,7 +53,6 @@ namespace BaiCiZhan.view
                 return;
             }
             audioPlayer.Play(file);
-            trackBar1.Value = trackBar1.Minimum;
         }
 
         void audioPlayer_PlayTimeChanged(AudioFileReader audioFile)
@@ -74,6 +83,8 @@ namespace BaiCiZhan.view
             }));
         }
 
+        #region 按钮事件
+
         private void btnPlay_Click(object sender, EventArgs e)
         {
             try
@@ -88,12 +99,27 @@ namespace BaiCiZhan.view
 
         }
 
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            audioPlayer.Pause();
+        }
+
         private void btnStop_Click(object sender, EventArgs e)
         {
             trackBar1.Value = trackBar1.Minimum;
             audioPlayer.Close();
         }
 
+        #endregion
+
+        #region trackbar事件
+        void trackBar1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                audioPlayer.Pause();
+            }
+        }
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
         }
@@ -129,6 +155,8 @@ namespace BaiCiZhan.view
 
             trackBar1.Value = Convert.ToInt32(dblValue);
         }
+
+        #endregion
 
 
     }

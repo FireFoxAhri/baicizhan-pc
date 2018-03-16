@@ -34,9 +34,8 @@
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblSeconds = new System.Windows.Forms.Label();
-            this.btnPlayWord = new System.Windows.Forms.Button();
             this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
+            this.btnPlayWord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -48,16 +47,16 @@
             this.rtbWrodInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbWrodInfo.Location = new System.Drawing.Point(6, 2);
             this.rtbWrodInfo.Name = "rtbWrodInfo";
-            this.rtbWrodInfo.Size = new System.Drawing.Size(311, 174);
+            this.rtbWrodInfo.Size = new System.Drawing.Size(287, 174);
             this.rtbWrodInfo.TabIndex = 0;
             this.rtbWrodInfo.Text = "_  consoles";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(322, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(302, 8);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 174);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 165);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -106,14 +105,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
             // 
-            // lblSeconds
+            // ucAudioPlayer1
             // 
-            this.lblSeconds.AutoSize = true;
-            this.lblSeconds.Location = new System.Drawing.Point(5, 456);
-            this.lblSeconds.Name = "lblSeconds";
-            this.lblSeconds.Size = new System.Drawing.Size(11, 12);
-            this.lblSeconds.TabIndex = 6;
-            this.lblSeconds.Text = "0";
+            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
+            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
+            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
+            this.ucAudioPlayer1.TabIndex = 8;
             // 
             // btnPlayWord
             // 
@@ -125,19 +122,11 @@
             this.btnPlayWord.UseVisualStyleBackColor = true;
             this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
             // 
-            // ucAudioPlayer1
-            // 
-            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
-            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
-            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
-            this.ucAudioPlayer1.TabIndex = 8;
-            // 
             // WordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnPlayWord);
-            this.Controls.Add(this.lblSeconds);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rtbWrodInfo);
@@ -146,7 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -158,7 +146,6 @@
         private System.Windows.Forms.RichTextBox rtbInputSentence;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Button btnShowSentenc;
-        private System.Windows.Forms.Label lblSeconds;
         private System.Windows.Forms.Button btnPlayWord;
         private ucAudioPlayer ucAudioPlayer1;
 

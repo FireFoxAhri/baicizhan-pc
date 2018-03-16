@@ -16,23 +16,57 @@ namespace BaiCiZhan.Helper
 
     public class HistoryHelper : IHistoryHelper
     {
-        const string HISTORY_FILE = @"DATA\HISTORY_FILE.TXT";
+        readonly string DATA_DIR;
+        const string HISTORY_FILE = @"HISTORY_FILE.TXT";
+        string historyFile
+        {
+            get
+            {
+                createFile();
+                return Path.Combine(DATA_DIR, HISTORY_FILE);
+            }
+        }
+        public HistoryHelper()
+        {
+            var key = "DATA_DIR";
+            string dir = System.Configuration.ConfigurationManager.AppSettings[key];
+            if (!string.IsNullOrEmpty(dir))
+            {
+                DATA_DIR = dir;
+            }
+            else
+            {
+                DATA_DIR = "data";
+            }
+
+        }
         public void Add(WordInfo word)
         {
-            //createFile();
             WordHistory wh = new WordHistory();
             wh.Word = word.word;
             wh.AddTime = DateTime.Now;
             wh.WordSource = word.source;
-            File.AppendAllText(HISTORY_FILE, wh.Serialize() + "\r\n");
+            File.AppendAllText(historyFile, wh.Serialize() + "\r\n");
         }
 
         void createFile()
         {
-
-            if (!File.Exists(HISTORY_FILE))
+            if (!Directory.Exists(DATA_DIR))
             {
-                File.Create(HISTORY_FILE);
+                try
+                {
+                    Directory.CreateDirectory(DATA_DIR);
+                }
+                catch (Exception ex)
+                {
+                    throw new IOException("创建数据文件夹错误 -> " + DATA_DIR + " -> " + ex.Message);
+                }
+
+            }
+            var path = Path.Combine(DATA_DIR, HISTORY_FILE);
+            if (!File.Exists(path))
+            {
+                File.WriteAllText(path, "");
             }
         }
 
@@ -42,7 +76,7 @@ namespace BaiCiZhan.Helper
         /// <returns></returns>
         public List<WordHistory> GetAll()
         {
-            var lines = File.ReadAllLines(HISTORY_FILE);
+            var lines = File.ReadAllLines(historyFile);
             List<WordHistory> whs = new List<WordHistory>();
             foreach (var line in lines)
             {
@@ -53,7 +87,7 @@ namespace BaiCiZhan.Helper
                 var wh = WordHistory.FromString(line);
                 whs.Add(wh);
             }
-            return whs.OrderByDescending(n=>n.AddTime).ToList();
+            return whs.OrderByDescending(n => n.AddTime).ToList();
         }
         public List<WordHistory> GetAll(string wordContain)
         {

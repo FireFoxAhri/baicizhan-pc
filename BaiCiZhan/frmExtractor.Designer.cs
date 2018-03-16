@@ -104,7 +104,7 @@
             this.Controls.Add(this.ucOpenFileDialog2);
             this.Controls.Add(this.ucOpenFileDialogZpk);
             this.Name = "frmExtractor";
-            this.Text = "frmExtractor";
+            this.Text = "解析zpk";
             this.Controls.SetChildIndex(this.rtbMsg, 0);
             this.Controls.SetChildIndex(this.cbMsgAutoScroll, 0);
             this.Controls.SetChildIndex(this.ucOpenFileDialogZpk, 0);

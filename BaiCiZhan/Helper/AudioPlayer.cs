@@ -15,18 +15,25 @@ namespace BaiCiZhan.Helper
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
 
-        private bool _isPlaying;
-        public bool IsPlaying
+        /// <summary>
+        ///Stopped = 0,Playing = 1,Paused = 2; -1: 设备为空
+        /// </summary>
+        public int PlayState
         {
             get
             {
-                return _isPlaying;
-            }
-            private set
-            {
-                _isPlaying = value;
+                if (this.outputDevice == null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return (int)this.outputDevice.PlaybackState;
+                }
             }
         }
+
+
         Action action = null;
         System.Timers.Timer timer;
 
@@ -81,7 +88,7 @@ namespace BaiCiZhan.Helper
 
             //把正在播放的声音关闭;
             this.Close();
-            this.IsPlaying = true;
+            //this.IsPlaying = true;
 
             if (outputDevice == null)
             {
@@ -125,7 +132,7 @@ namespace BaiCiZhan.Helper
         }
         public void Close()
         {
-            this.IsPlaying = false;
+            //this.IsPlaying = false;
             if (outputDevice != null)
             {
                 //要把事件清除掉, 不然dispose后会调用
@@ -153,7 +160,7 @@ namespace BaiCiZhan.Helper
 
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (IsPlaying && audioFile != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            if (audioFile != null && outputDevice.PlaybackState == PlaybackState.Playing)
             {
                 if (_playTimeChanged != null)
                 {
@@ -161,5 +168,7 @@ namespace BaiCiZhan.Helper
                 }
             }
         }
+
+
     }
 }

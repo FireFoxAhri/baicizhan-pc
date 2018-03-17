@@ -9,7 +9,7 @@ namespace BaiCiZhan.Helper
 {
     interface IAudioPlayer
     {
-        bool IsPlaying { get; }
+        int PlayState { get; }
         void Close();
         void Play(string file, Action action = null, int percent = 0);
         void Pause();

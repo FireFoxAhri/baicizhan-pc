@@ -117,7 +117,15 @@ namespace BaiCiZhan.view
         {
             if (e.KeyCode == Keys.Space)
             {
-                audioPlayer.Pause();
+                if (audioPlayer.PlayState == (int)PlaybackState.Paused || audioPlayer.PlayState == (int)PlaybackState.Playing)
+                {
+                    audioPlayer.Pause();
+                }
+                else
+                {
+                    audioPlayer.Play(this.file);
+                }
+
             }
         }
         private void trackBar1_Scroll(object sender, EventArgs e)

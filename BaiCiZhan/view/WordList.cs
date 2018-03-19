@@ -78,7 +78,7 @@ namespace BaiCiZhan.view
 
         void tbWord_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
             {
                 e.Handled = true;
                 listView1.Select();
@@ -88,6 +88,7 @@ namespace BaiCiZhan.view
                 }
             }
         }
+
         public WordInfo GetSelectWrod()
         {
             if (isHistory())
@@ -110,7 +111,6 @@ namespace BaiCiZhan.view
         {
             loadList();
         }
-
 
         void loadList()
         {

@@ -114,6 +114,7 @@ namespace BaiCiZhan
             try
             {
                 this.Cursor = Cursors.WaitCursor;
+                
                 var word = wordList1.GetSelectWrod();
                 if (word == null)
                 {

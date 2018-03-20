@@ -71,7 +71,10 @@ namespace BaiCiZhan.Helper
         public void Play(string file, Action action = null, int percent = 0)
         {
             //如果是pause状态, 继续播放
-            if (this.outputDevice != null && percent == 0 && this.outputDevice.PlaybackState == PlaybackState.Paused)
+            if (this.outputDevice != null && this.audioFile != null &&
+                percent == 0 &&
+                this.outputDevice.PlaybackState == PlaybackState.Paused &&
+                this.audioFile.FileName == file)
             {
                 this.outputDevice.Play();
                 return;

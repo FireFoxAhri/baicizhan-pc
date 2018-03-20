@@ -56,6 +56,7 @@ namespace BaiCiZhan.view
             //wordHelper.SetDataSourceByName(lstSource.First());
             loadList();
         }
+
         void cboWordSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             tbWord.Text = "";

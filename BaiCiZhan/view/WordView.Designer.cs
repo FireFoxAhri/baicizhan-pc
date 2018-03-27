@@ -34,9 +34,9 @@
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPlayWord = new System.Windows.Forms.Button();
             this.cbTranslate = new System.Windows.Forms.CheckBox();
             this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
+            this.btnPlayWord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -107,16 +107,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
             // 
-            // btnPlayWord
-            // 
-            this.btnPlayWord.Image = global::BaiCiZhan.Properties.Resources.Play;
-            this.btnPlayWord.Location = new System.Drawing.Point(9, 6);
-            this.btnPlayWord.Name = "btnPlayWord";
-            this.btnPlayWord.Size = new System.Drawing.Size(26, 20);
-            this.btnPlayWord.TabIndex = 7;
-            this.btnPlayWord.UseVisualStyleBackColor = true;
-            this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
-            // 
             // cbTranslate
             // 
             this.cbTranslate.AutoSize = true;
@@ -133,6 +123,16 @@
             this.ucAudioPlayer1.Name = "ucAudioPlayer1";
             this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
             this.ucAudioPlayer1.TabIndex = 8;
+            // 
+            // btnPlayWord
+            // 
+            this.btnPlayWord.Image = global::BaiCiZhan.Properties.Resources.Play;
+            this.btnPlayWord.Location = new System.Drawing.Point(9, 6);
+            this.btnPlayWord.Name = "btnPlayWord";
+            this.btnPlayWord.Size = new System.Drawing.Size(26, 20);
+            this.btnPlayWord.TabIndex = 7;
+            this.btnPlayWord.UseVisualStyleBackColor = true;
+            this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
             // 
             // WordView
             // 
@@ -160,8 +160,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Button btnShowSentenc;
         private System.Windows.Forms.Button btnPlayWord;
-        private ucAudioPlayer ucAudioPlayer1;
         private System.Windows.Forms.CheckBox cbTranslate;
+        public ucAudioPlayer ucAudioPlayer1;
 
     }
 }

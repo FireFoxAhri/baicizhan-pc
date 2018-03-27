@@ -167,5 +167,9 @@ namespace BaiCiZhan.view
         #endregion
 
 
+        public void SelectTrackBar()
+        {
+            this.trackBar1.Select();
+        }
     }
 }

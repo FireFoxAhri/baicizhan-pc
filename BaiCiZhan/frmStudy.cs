@@ -90,11 +90,16 @@ namespace BaiCiZhan
             {
                 this.wordView1.playSentence();
                 e.Handled = true;
-
             }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D3)
             {
                 this.wordView1.btnShowSentenc.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Q)
+            {
+                this.wordView1.playSentence();
+                this.wordView1.ucAudioPlayer1.SelectTrackBar();
                 e.Handled = true;
             }
         }

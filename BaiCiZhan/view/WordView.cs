@@ -122,14 +122,24 @@ _   {0}  {1}
                 {
                     return;
                 }
+                string text = "";
                 if (cbTranslate.Checked)
                 {
-                    rtbSentence.Text = wordInfo.sentence+"\r\n"+wordInfo.sentence_trans;
-
+                    text = wordInfo.sentence+"\r\n"+wordInfo.sentence_trans;
                 }
                 else
                 {
-                    rtbSentence.Text = wordInfo.sentence;
+                   text = wordInfo.sentence;
+                }
+                if (rtbSentence.Text.Contains(text))
+                {
+                    rtbSentence.Text = "";
+                    btnShowSentenc.Text = "显示";
+                }
+                else
+                {
+                    rtbSentence.Text = text;
+                    btnShowSentenc.Text = "隐藏";
                 }
 
             }

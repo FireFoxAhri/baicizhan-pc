@@ -87,7 +87,7 @@
             this.btnShowSentenc.Name = "btnShowSentenc";
             this.btnShowSentenc.Size = new System.Drawing.Size(62, 23);
             this.btnShowSentenc.TabIndex = 4;
-            this.btnShowSentenc.Text = "显示(C3)";
+            this.btnShowSentenc.Text = "显示";
             this.btnShowSentenc.UseVisualStyleBackColor = true;
             this.btnShowSentenc.Click += new System.EventHandler(this.btnShowSentenc_Click);
             // 

@@ -62,6 +62,7 @@ namespace BaiCiZhan.view
             rtbWrodInfo.Text = "";
             rtbSentence.Text = "";
             rtbInputSentence.Text = "";
+            btnShowSentenc.Text = "显示";
             pictureBox1.BackgroundImage = null;
 
             //添加历史记录
@@ -125,12 +126,13 @@ _   {0}  {1}
                 string text = "";
                 if (cbTranslate.Checked)
                 {
-                    text = wordInfo.sentence+"\r\n"+wordInfo.sentence_trans;
+                    text = wordInfo.sentence + "\n" + wordInfo.sentence_trans;
                 }
                 else
                 {
-                   text = wordInfo.sentence;
+                    text = wordInfo.sentence;
                 }
+				text = text.Replace("\r\n", "\n");
                 if (rtbSentence.Text.Contains(text))
                 {
                     rtbSentence.Text = "";

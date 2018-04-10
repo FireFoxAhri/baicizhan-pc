@@ -14,7 +14,7 @@ namespace BaiCiZhan.view
 {
     public partial class ucAudioPlayer : UserControl
     {
-        string file = "";
+        public string File = "";
         //string file = @"D:\资料\百词斩数据文件\单词\1_解压\abandon\sa_1_4719_0_6_160123165116.aac";
         //string file = @"F:\CloudMusic\孟庭苇 - 羞答答的玫瑰静悄悄地开.mp3";
         Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
@@ -41,7 +41,7 @@ namespace BaiCiZhan.view
         public void Play(string file)
         {
 
-            this.file = file;
+            this.File = file;
             if (string.IsNullOrEmpty(file))
             {
                 MessageBox.Show("没有加载文件");
@@ -89,7 +89,7 @@ namespace BaiCiZhan.view
         {
             try
             {
-                Play(this.file);
+                Play(this.File);
             }
             catch (Exception ex)
             {
@@ -123,7 +123,7 @@ namespace BaiCiZhan.view
                 }
                 else
                 {
-                    audioPlayer.Play(this.file);
+                    audioPlayer.Play(this.File);
                 }
 
             }
@@ -144,7 +144,7 @@ namespace BaiCiZhan.view
             try
             {
                 int percent = trackBar1.Value;
-                audioPlayer.Play(file, null, percent);
+                audioPlayer.Play(File, null, percent);
             }
             catch (Exception ex)
             {

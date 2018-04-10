@@ -23,6 +23,8 @@ namespace BaiCiZhan.view
             }
         }
         WordInfo wordInfo;
+        bool isShowPicture;
+        bool isPlaySentence;
 
         Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
         public WordView()
@@ -32,6 +34,8 @@ namespace BaiCiZhan.view
 
             ucAudioPlayer1.btnPlay.Click += btnPlay_Click;
             this.Disposed += WordView_Disposed;
+            this.cbPicture.Checked = true;
+            this.cbSentence.Checked = true;
         }
 
         void WordView_Disposed(object sender, EventArgs e)
@@ -53,7 +57,6 @@ namespace BaiCiZhan.view
             {
                 return;
             }
-
         }
 
         public void ShowWordInfo(WordInfo wordInfo)
@@ -64,8 +67,11 @@ namespace BaiCiZhan.view
             rtbInputSentence.Text = "";
             btnShowSentenc.Text = "显示";
             pictureBox1.BackgroundImage = null;
+            this.isPlaySentence = cbSentence.Checked;
+            this.isShowPicture = cbPicture.Checked;
 
-            //添加历史记录
+            #region 添加历史记录
+
             IHistoryHelper helper = new HistoryHelper();
 
             ////如果当前单词和最后一个单词不相同就添加, 也就是最近的单词不重复添加
@@ -81,6 +87,8 @@ namespace BaiCiZhan.view
                 helper.Add(wordInfo);
             }
 
+            #endregion
+
             this.wordInfo = wordInfo;
             var msg = string.Format(@"
 _   {0}  {1}
@@ -88,14 +96,21 @@ _   {0}  {1}
 {3}
 ", wordInfo.word, wordInfo.accent, wordInfo.word_etyma, wordInfo.mean_cn).Trim();
             rtbWrodInfo.Text = msg;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
+            if (isShowPicture)
+            {
+                pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+                pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
+            }
+            ucAudioPlayer1.File = wordInfo.sentence_audio;
             audioPlayer.Play(wordInfo.word_audio, () =>
             {
-                this.Invoke((MethodInvoker)delegate
+                if (isPlaySentence)
                 {
-                    playSentence();
-                });
+                    this.Invoke((MethodInvoker)delegate
+                          {
+                              playSentence();
+                          });
+                }
             });
         }
 
@@ -132,7 +147,7 @@ _   {0}  {1}
                 {
                     text = wordInfo.sentence;
                 }
-				text = text.Replace("\r\n", "\n");
+                text = text.Replace("\r\n", "\n");
                 if (rtbSentence.Text.Contains(text))
                 {
                     rtbSentence.Text = "";

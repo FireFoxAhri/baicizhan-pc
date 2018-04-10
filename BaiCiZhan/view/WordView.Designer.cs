@@ -37,6 +37,8 @@
             this.cbTranslate = new System.Windows.Forms.CheckBox();
             this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             this.btnPlayWord = new System.Windows.Forms.Button();
+            this.cbPicture = new System.Windows.Forms.CheckBox();
+            this.cbSentence = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -134,20 +136,43 @@
             this.btnPlayWord.UseVisualStyleBackColor = true;
             this.btnPlayWord.Click += new System.EventHandler(this.btnPlayWord_Click);
             // 
+            // cbPicture
+            // 
+            this.cbPicture.AutoSize = true;
+            this.cbPicture.Location = new System.Drawing.Point(8, 459);
+            this.cbPicture.Name = "cbPicture";
+            this.cbPicture.Size = new System.Drawing.Size(72, 16);
+            this.cbPicture.TabIndex = 8;
+            this.cbPicture.Text = "显示图片";
+            this.cbPicture.UseVisualStyleBackColor = true;
+            // 
+            // cbSentence
+            // 
+            this.cbSentence.AutoSize = true;
+            this.cbSentence.Location = new System.Drawing.Point(8, 479);
+            this.cbSentence.Name = "cbSentence";
+            this.cbSentence.Size = new System.Drawing.Size(72, 16);
+            this.cbSentence.TabIndex = 9;
+            this.cbSentence.Text = "播放句子";
+            this.cbSentence.UseVisualStyleBackColor = true;
+            // 
             // WordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbSentence);
+            this.Controls.Add(this.cbPicture);
             this.Controls.Add(this.btnPlayWord);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rtbWrodInfo);
             this.Name = "WordView";
-            this.Size = new System.Drawing.Size(653, 494);
+            this.Size = new System.Drawing.Size(653, 516);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -162,6 +187,8 @@
         private System.Windows.Forms.Button btnPlayWord;
         private System.Windows.Forms.CheckBox cbTranslate;
         public ucAudioPlayer ucAudioPlayer1;
+        private System.Windows.Forms.CheckBox cbPicture;
+        private System.Windows.Forms.CheckBox cbSentence;
 
     }
 }

@@ -13,6 +13,7 @@ namespace BaiCiZhan.Helper
         void Close();
         void Play(string file, Action action = null, int percent = 0);
         void Pause();
+
         event Action<AudioFileReader> PlayTimeChanged;
     }
 }

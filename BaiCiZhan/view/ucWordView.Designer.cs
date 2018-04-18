@@ -39,6 +39,7 @@
             this.btnPlayWord = new System.Windows.Forms.Button();
             this.cbPicture = new System.Windows.Forms.CheckBox();
             this.cbSentence = new System.Windows.Forms.CheckBox();
+            this.btnFavorite = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -156,17 +157,28 @@
             this.cbSentence.Text = "播放句子";
             this.cbSentence.UseVisualStyleBackColor = true;
             // 
-            // WordView
+            // btnFavorite
+            // 
+            this.btnFavorite.Location = new System.Drawing.Point(9, 501);
+            this.btnFavorite.Name = "btnFavorite";
+            this.btnFavorite.Size = new System.Drawing.Size(75, 23);
+            this.btnFavorite.TabIndex = 10;
+            this.btnFavorite.Text = "收藏";
+            this.btnFavorite.UseVisualStyleBackColor = true;
+            this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
+            // 
+            // ucWordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnFavorite);
             this.Controls.Add(this.cbSentence);
             this.Controls.Add(this.cbPicture);
             this.Controls.Add(this.btnPlayWord);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rtbWrodInfo);
-            this.Name = "WordView";
+            this.Name = "ucWordView";
             this.Size = new System.Drawing.Size(653, 516);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -189,6 +201,7 @@
         public ucAudioPlayer ucAudioPlayer1;
         private System.Windows.Forms.CheckBox cbPicture;
         private System.Windows.Forms.CheckBox cbSentence;
+        private System.Windows.Forms.Button btnFavorite;
 
     }
 }

@@ -85,7 +85,7 @@
     <Compile Include="Helper\AudioPlayerFactory.cs" />
     <Compile Include="Helper\IAudioPlayer.cs" />
     <Compile Include="Helper\WordHelper.cs" />
-    <Compile Include="Helper\HistoryHelper.cs" />
+    <Compile Include="Helper\WordSaveHelper.cs" />
     <Compile Include="Helper\ZPKExtractor.cs" />
     <Compile Include="Model\WordHistory.cs" />
     <Compile Include="Model\WordInfo.cs" />

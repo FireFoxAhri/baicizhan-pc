@@ -72,7 +72,8 @@ namespace BaiCiZhan.view
 
             #region 添加历史记录
 
-            IHistoryHelper helper = new HistoryHelper();
+            IWordSaveHelper helper = Helper.WordSaveFactory
+                            .GetWordSaveHelper(Helper.WordSaveFactory.WordSaveType.history);
 
             ////如果当前单词和最后一个单词不相同就添加, 也就是最近的单词不重复添加
             //var wh = helper.GetAll().Aggregate((max, n) => max.AddTime > n.AddTime ? max : n);
@@ -81,9 +82,9 @@ namespace BaiCiZhan.view
             //    helper.Add(wordInfo);
             //}
 
-            //一小时之内不重复添加
+            //三天之内不重复添加
             //查找最近一小时添加的单词, 如果没找到, 就添加
-            var wh = helper.GetAll().FirstOrDefault(n => n.AddTime > DateTime.Now.AddHours(-1) && n.Word == wordInfo.word);
+            var wh = helper.GetAll().FirstOrDefault(n => n.AddTime > DateTime.Now.AddDays(-3) && n.Word == wordInfo.word);
             if (wh == null)
             {
                 helper.Add(wordInfo);
@@ -114,6 +115,14 @@ _   {0}  {1}
                           });
                 }
             });
+            if (isFavorite(this.wordInfo.word))
+            {
+                btnFavorite.Text = "已收藏";
+            }
+            else
+            {
+                btnFavorite.Text = "收藏";
+            }
         }
 
         public void playSentence()
@@ -193,5 +202,22 @@ _   {0}  {1}
             }
         }
 
+        private void btnFavorite_Click(object sender, EventArgs e)
+        {
+            var word = this.wordInfo.word;
+            if (!isFavorite(word))
+            {
+                var helper = Helper.WordSaveFactory.GetWordSaveHelper(Helper.WordSaveFactory.WordSaveType.favorit);
+                helper.Add(this.wordInfo);
+                btnFavorite.Text = "已收藏";
+            }
+        }
+
+        bool isFavorite(string word)
+        {
+            var helper = Helper.WordSaveFactory.GetWordSaveHelper(Helper.WordSaveFactory.WordSaveType.favorit);
+            var w = helper.GetAll(word + "/").FirstOrDefault();
+            return w != null;
+        }
     }
 }

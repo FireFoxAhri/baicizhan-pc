@@ -48,12 +48,10 @@ namespace BaiCiZhan.view
 
         void WordList_Load(object sender, EventArgs e)
         {
-            //this.cboWordSource.SelectedIndex = 0;
             List<string> lstSource = Helper.WordHelper.GetWordSources().Select(n => n.Name).ToList();
             lstSource.Add(HISTORY);
             this.cboWordSource.DataSource = lstSource;
 
-            //wordHelper.SetDataSourceByName(lstSource.First());
             loadList();
         }
 

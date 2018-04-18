@@ -93,7 +93,7 @@ namespace BaiCiZhan.Helper
         {
             if (!Directory.Exists(wordPath))
             {
-                throw new Exception("单词文件夹不存在, 请在配置文件中正确配置: "+wordPath);
+                throw new Exception("单词文件夹不存在, 请在配置文件中正确配置: " + wordPath);
             }
         }
 
@@ -136,10 +136,24 @@ namespace BaiCiZhan.Helper
             return info;
         }
 
+        /// <summary>
+        /// 如果以'/'结尾, 精确匹配, 否则模糊匹配
+        /// </summary>
+        /// <param name="wordPattern"></param>
+        /// <returns></returns>
         public List<string> GetWordList(string wordPattern = "")
         {
             CheckData();
-            var pattern = string.IsNullOrEmpty(wordPattern) ? "*" : ("*" + wordPattern + "*");
+            var pattern = "";
+            if (wordPattern.EndsWith("/"))
+            {
+                pattern = wordPattern.TrimEnd("/".ToArray());
+            }
+            else
+            {
+                pattern = string.IsNullOrEmpty(wordPattern) ? "*" : ("*" + wordPattern + "*");
+            }
+
             var arr = Directory.GetDirectories(wordPath, pattern).Select(n => Path.GetFileName(n));
             return arr.ToList();
         }

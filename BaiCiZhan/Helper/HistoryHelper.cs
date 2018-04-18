@@ -89,8 +89,17 @@ namespace BaiCiZhan.Helper
             }
             return whs.OrderByDescending(n => n.AddTime).ToList();
         }
+        /// <summary>
+        /// 如果以'/'结尾, 精确匹配,  否则模糊匹配
+        /// </summary>
+        /// <param name="wordContain"></param>
+        /// <returns></returns>
         public List<WordHistory> GetAll(string wordContain)
         {
+            if (wordContain.EndsWith("/"))
+            {
+                return GetAll().Where(n => n.Word == wordContain).ToList();
+            }
             return GetAll().Where(n => n.Word.Contains(wordContain)).ToList();
         }
     }

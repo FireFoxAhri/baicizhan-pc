@@ -80,7 +80,9 @@ namespace BaiCiZhan.view
             //{
             //    helper.Add(wordInfo);
             //}
+
             //一小时之内不重复添加
+            //查找最近一小时添加的单词, 如果没找到, 就添加
             var wh = helper.GetAll().FirstOrDefault(n => n.AddTime > DateTime.Now.AddHours(-1) && n.Word == wordInfo.word);
             if (wh == null)
             {

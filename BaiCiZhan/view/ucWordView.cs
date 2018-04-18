@@ -13,7 +13,7 @@ using BaiCiZhan.Helper;
 
 namespace BaiCiZhan.view
 {
-    public partial class WordView : UserControl
+    public partial class ucWordView : UserControl
     {
         public RichTextBox InputSentenceRichTextBox
         {
@@ -27,7 +27,7 @@ namespace BaiCiZhan.view
         bool isPlaySentence;
 
         Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
-        public WordView()
+        public ucWordView()
         {
             InitializeComponent();
             this.Load += WordView_Load;

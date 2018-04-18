@@ -11,7 +11,7 @@ using BaiCiZhan.Model;
 
 namespace BaiCiZhan.view
 {
-    public partial class WordList : UserControl
+    public partial class ucWordList : UserControl
     {
         //todo: 单词数据源(从文件夹里读取单词)和历史记录数据源, 属于不同的数据源, 根据单一职责原理, 这个WordList应该只处理一种数据源, 处理两种数据源必然会导致冗余; 
         //解决办法: 1. 新建一个类统一单词数据源和历史记录数据源; 2. 为两种数据源分别建立不同的显示控件;
@@ -32,7 +32,7 @@ namespace BaiCiZhan.view
                 return this.tbWord;
             }
         }
-        public WordList()
+        public ucWordList()
         {
             InitializeComponent();
 

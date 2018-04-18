@@ -1,6 +1,6 @@
 ﻿namespace BaiCiZhan.view
 {
-    partial class WordView
+    partial class ucWordView
     {
         /// <summary> 
         /// 必需的设计器变量。

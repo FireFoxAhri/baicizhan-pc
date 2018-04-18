@@ -1,6 +1,6 @@
 ﻿namespace BaiCiZhan.view
 {
-    partial class WordList
+    partial class ucWordList
     {
         /// <summary> 
         /// 必需的设计器变量。

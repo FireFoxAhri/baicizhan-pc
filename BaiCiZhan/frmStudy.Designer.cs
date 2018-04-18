@@ -35,8 +35,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.wordView1 = new BaiCiZhan.view.WordView();
-            this.wordList1 = new BaiCiZhan.view.WordList();
+            this.wordView1 = new BaiCiZhan.view.ucWordView();
+            this.wordList1 = new BaiCiZhan.view.ucWordList();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -144,8 +144,8 @@
 
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnLoadWord;
-        private view.WordList wordList1;
-        private view.WordView wordView1;
+        private view.ucWordList wordList1;
+        private view.ucWordView wordView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

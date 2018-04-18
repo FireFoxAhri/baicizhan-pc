@@ -98,17 +98,17 @@
     <Compile Include="view\ucAudioPlayer.Designer.cs">
       <DependentUpon>ucAudioPlayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\WordList.cs">
+    <Compile Include="view\ucWordList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\WordList.Designer.cs">
-      <DependentUpon>WordList.cs</DependentUpon>
+    <Compile Include="view\ucWordList.Designer.cs">
+      <DependentUpon>ucWordList.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\WordView.cs">
+    <Compile Include="view\ucWordView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\WordView.Designer.cs">
-      <DependentUpon>WordView.cs</DependentUpon>
+    <Compile Include="view\ucWordView.Designer.cs">
+      <DependentUpon>ucWordView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmAudioTest.resx">
       <DependentUpon>frmAudioTest.cs</DependentUpon>
@@ -135,11 +135,11 @@
     <EmbeddedResource Include="view\ucAudioPlayer.resx">
       <DependentUpon>ucAudioPlayer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\WordList.resx">
-      <DependentUpon>WordList.cs</DependentUpon>
+    <EmbeddedResource Include="view\ucWordList.resx">
+      <DependentUpon>ucWordList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\WordView.resx">
-      <DependentUpon>WordView.cs</DependentUpon>
+    <EmbeddedResource Include="view\ucWordView.resx">
+      <DependentUpon>ucWordView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="data\百词斩背单词.zip" />
     <None Include="packages.config">

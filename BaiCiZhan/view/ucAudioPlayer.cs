@@ -38,7 +38,7 @@ namespace BaiCiZhan.view
         }
 
 
-        public void Play(string file)
+        public void Play(string file,Action action = null)
         {
 
             this.File = file;
@@ -52,7 +52,7 @@ namespace BaiCiZhan.view
                 MessageBox.Show("文件不存在: " + file);
                 return;
             }
-            audioPlayer.Play(file);
+            audioPlayer.Play(file,action);
         }
 
         void audioPlayer_PlayTimeChanged(AudioFileReader audioFile)

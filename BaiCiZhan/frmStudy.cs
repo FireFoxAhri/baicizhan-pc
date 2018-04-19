@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using QXX.Common.Forms;
 using BaiCiZhan.Helper;
 
-
+using BaiCiZhan.Model;
 namespace BaiCiZhan
 {
     public partial class frmStudy : Form
@@ -22,7 +22,7 @@ namespace BaiCiZhan
             InitializeComponent();
             this.wordList1.WordListBox.DoubleClick += ListBox_DoubleClick;
             this.wordList1.WordListBox.KeyDown += ListBox_KeyDown;
-            this.wordView1.Enabled = false;
+            this.ucWordView1.Enabled = false;
 
             this.KeyPreview = true;
             this.KeyDown += frmStudy_KeyDown;
@@ -32,7 +32,13 @@ namespace BaiCiZhan
             timer.Tick += timer_Tick;
             timer.Interval = 1000;
 
+            //
+            playlistTimer.Interval = 500;
+            playlistTimer.Tick += playlistTimer_Tick;
+
+            ucWordView1.SentencePlayDoneAction += ucWordView1_SentencePlayDoneAction;
         }
+
 
         void frmStudy_Load(object sender, EventArgs e)
         {
@@ -42,7 +48,7 @@ namespace BaiCiZhan
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (this.wordView1.Enabled)
+            if (this.ucWordView1.Enabled)
             {
                 var lblSeconds = toolStripStatusLabel2;
                 var text = Convert.ToString(lblSeconds.Tag);
@@ -88,18 +94,18 @@ namespace BaiCiZhan
             }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
             {
-                this.wordView1.playSentence();
+                this.ucWordView1.playSentence();
                 e.Handled = true;
             }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D3)
             {
-                this.wordView1.btnShowSentenc.PerformClick();
+                this.ucWordView1.btnShowSentenc.PerformClick();
                 e.Handled = true;
             }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Q)
             {
-                this.wordView1.playSentence();
-                this.wordView1.ucAudioPlayer1.SelectTrackBar();
+                this.ucWordView1.playSentence();
+                this.ucWordView1.ucAudioPlayer1.SelectTrackBar();
                 e.Handled = true;
             }
         }
@@ -116,21 +122,27 @@ namespace BaiCiZhan
 
         private void btnLoadWord_Click(object sender, EventArgs e)
         {
+            loadWord();
+
+        }
+
+        private void loadWord()
+        {
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                
+
                 var word = wordList1.GetSelectWrod();
                 if (word == null)
                 {
                     MessageBox.Show("没有选中单词");
                     return;
                 }
-                if (wordView1.Enabled == false)
+                if (ucWordView1.Enabled == false)
                 {
-                    wordView1.Enabled = true;
+                    ucWordView1.Enabled = true;
                 }
-                wordView1.ShowWordInfo(word);
+                ucWordView1.ShowWordInfo(word);
                 showMsg1(word.word);
                 resetWordLoad();
             }
@@ -142,7 +154,6 @@ namespace BaiCiZhan
             {
                 this.Cursor = Cursors.Arrow;
             }
-
         }
 
         void showMsg1(string msg)
@@ -159,5 +170,41 @@ namespace BaiCiZhan
                 this.toolStripStatusLabel2.Text = msg;
             });
         }
+
+        Timer playlistTimer = new Timer();
+
+        void playlistTimer_Tick(object sender, EventArgs e)
+        {
+
+        }
+        bool isPlaylist = false;
+        void ucWordView1_SentencePlayDoneAction()
+        {
+            if (isPlaylist)
+            {
+                getPlaylistNext();
+                loadWord();
+            }
+        }
+        WordInfo getPlaylistNext()
+        {
+            var wordListbox = wordList1.WordListBox;
+            var index = wordListbox.SelectedIndex;
+            wordListbox.SelectedIndex = index + 1;
+            var word = wordList1.GetSelectWrod();
+            return word;
+        }
+
+        private void btnPlaylist_Click(object sender, EventArgs e)
+        {
+            isPlaylist = true;
+            loadWord();
+        }
+
+        private void btnStopPlaylist_Click(object sender, EventArgs e)
+        {
+            isPlaylist = false;
+        }
+
     }
 }

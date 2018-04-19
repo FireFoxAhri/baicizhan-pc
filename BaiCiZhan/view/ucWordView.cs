@@ -15,6 +15,7 @@ namespace BaiCiZhan.view
 {
     public partial class ucWordView : UserControl
     {
+        public event Action SentencePlayDoneAction;
         public RichTextBox InputSentenceRichTextBox
         {
             get
@@ -25,8 +26,8 @@ namespace BaiCiZhan.view
         WordInfo wordInfo;
         bool isShowPicture;
         bool isPlaySentence;
-
-        Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
+        //播放单词的player
+        Helper.IAudioPlayer wordAudioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
         public ucWordView()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace BaiCiZhan.view
 
         void WordView_Disposed(object sender, EventArgs e)
         {
-            audioPlayer.Close();
+            wordAudioPlayer.Close();
         }
 
         void btnPlay_Click(object sender, EventArgs e)
@@ -105,7 +106,7 @@ _   {0}  {1}
                 pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
             }
             ucAudioPlayer1.File = wordInfo.sentence_audio;
-            audioPlayer.Play(wordInfo.word_audio, () =>
+            wordAudioPlayer.Play(wordInfo.word_audio, () =>
             {
                 if (isPlaySentence)
                 {
@@ -129,7 +130,7 @@ _   {0}  {1}
         {
             try
             {
-                ucAudioPlayer1.Play(wordInfo.sentence_audio);
+                ucAudioPlayer1.Play(wordInfo.sentence_audio, SentencePlayDoneAction);
                 rtbInputSentence.Select();
             }
             catch (Exception ex)
@@ -189,7 +190,7 @@ _   {0}  {1}
                     return;
                 }
                 var file = this.wordInfo.word_audio;
-                audioPlayer.Play(file);
+                wordAudioPlayer.Play(file);
 
             }
             catch (Exception ex)

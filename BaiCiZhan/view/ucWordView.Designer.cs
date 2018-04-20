@@ -198,7 +198,7 @@
         public System.Windows.Forms.Button btnShowSentenc;
         private System.Windows.Forms.Button btnPlayWord;
         private System.Windows.Forms.CheckBox cbTranslate;
-        public ucAudioPlayer ucAudioPlayer1;
+        private ucAudioPlayer ucAudioPlayer1;
         private System.Windows.Forms.CheckBox cbPicture;
         private System.Windows.Forms.CheckBox cbSentence;
         private System.Windows.Forms.Button btnFavorite;

@@ -26,7 +26,7 @@ namespace BaiCiZhan
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            ucAudioPlayer1.Play(file);
+            //ucAudioPlayer1.Play(file);
         }
 
 

@@ -31,11 +31,8 @@ namespace BaiCiZhan
             timer = new Timer();
             timer.Tick += timer_Tick;
             timer.Interval = 1000;
-
-            //
             playlistTimer.Interval = 500;
             playlistTimer.Tick += playlistTimer_Tick;
-
             ucWordView1.SentencePlayDoneAction += ucWordView1_SentencePlayDoneAction;
         }
 
@@ -105,7 +102,7 @@ namespace BaiCiZhan
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Q)
             {
                 this.ucWordView1.playSentence();
-                this.ucWordView1.ucAudioPlayer1.SelectTrackBar();
+                this.ucWordView1.UcAudioPlayer.SelectTrackBar();
                 e.Handled = true;
             }
         }
@@ -180,11 +177,21 @@ namespace BaiCiZhan
         bool isPlaylist = false;
         void ucWordView1_SentencePlayDoneAction()
         {
-            if (isPlaylist)
+            Task.Delay(2000).ContinueWith((t) =>
             {
-                getPlaylistNext();
-                loadWord();
-            }
+                if (isPlaylist &&
+                    (ucWordView1.UcAudioPlayer.PlayState == (int)NAudio.Wave.PlaybackState.Stopped ||
+                    ucWordView1.UcAudioPlayer.PlayState < 0))
+                {
+                    getPlaylistNext();
+                    loadWord();
+                }
+                else if (isPlaylist)
+                {
+                    //ucWordView1_SentencePlayDoneAction();
+                }
+            });
+
         }
         WordInfo getPlaylistNext()
         {

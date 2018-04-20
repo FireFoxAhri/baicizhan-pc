@@ -14,10 +14,18 @@ namespace BaiCiZhan.view
 {
     public partial class ucAudioPlayer : UserControl
     {
+
         public string File = "";
         //string file = @"D:\资料\百词斩数据文件\单词\1_解压\abandon\sa_1_4719_0_6_160123165116.aac";
         //string file = @"F:\CloudMusic\孟庭苇 - 羞答答的玫瑰静悄悄地开.mp3";
         Helper.IAudioPlayer audioPlayer = AudioPlayerFactory.GetNewAudioPlayer();
+        public int PlayState
+        {
+            get
+            {
+                return audioPlayer.PlayState;
+            }
+        }
         public ucAudioPlayer()
         {
             InitializeComponent();

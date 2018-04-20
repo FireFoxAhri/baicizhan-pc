@@ -23,6 +23,14 @@ namespace BaiCiZhan.view
                 return rtbInputSentence;
             }
         }
+
+        public ucAudioPlayer UcAudioPlayer
+        {
+            get
+            {
+                return ucAudioPlayer1;
+            }
+        }
         WordInfo wordInfo;
         bool isShowPicture;
         bool isPlaySentence;

@@ -34,14 +34,18 @@
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbTranslate = new System.Windows.Forms.CheckBox();
-            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             this.btnPlayWord = new System.Windows.Forms.Button();
             this.cbPicture = new System.Windows.Forms.CheckBox();
             this.cbSentence = new System.Windows.Forms.CheckBox();
             this.btnFavorite = new System.Windows.Forms.Button();
+            this.rbChn = new System.Windows.Forms.RadioButton();
+            this.rbEng = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbEngChn = new System.Windows.Forms.RadioButton();
+            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbWrodInfo
@@ -98,7 +102,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.cbTranslate);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.ucAudioPlayer1);
             this.groupBox1.Controls.Add(this.btnShowSentenc);
             this.groupBox1.Controls.Add(this.rtbInputSentence);
@@ -109,23 +113,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
-            // 
-            // cbTranslate
-            // 
-            this.cbTranslate.AutoSize = true;
-            this.cbTranslate.Location = new System.Drawing.Point(501, 26);
-            this.cbTranslate.Name = "cbTranslate";
-            this.cbTranslate.Size = new System.Drawing.Size(48, 16);
-            this.cbTranslate.TabIndex = 9;
-            this.cbTranslate.Text = "翻译";
-            this.cbTranslate.UseVisualStyleBackColor = true;
-            // 
-            // ucAudioPlayer1
-            // 
-            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
-            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
-            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
-            this.ucAudioPlayer1.TabIndex = 8;
             // 
             // btnPlayWord
             // 
@@ -167,6 +154,56 @@
             this.btnFavorite.UseVisualStyleBackColor = true;
             this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
             // 
+            // rbChn
+            // 
+            this.rbChn.AutoSize = true;
+            this.rbChn.Location = new System.Drawing.Point(45, 10);
+            this.rbChn.Name = "rbChn";
+            this.rbChn.Size = new System.Drawing.Size(35, 16);
+            this.rbChn.TabIndex = 10;
+            this.rbChn.Text = "中";
+            this.rbChn.UseVisualStyleBackColor = true;
+            // 
+            // rbEng
+            // 
+            this.rbEng.AutoSize = true;
+            this.rbEng.Checked = true;
+            this.rbEng.Location = new System.Drawing.Point(4, 10);
+            this.rbEng.Name = "rbEng";
+            this.rbEng.Size = new System.Drawing.Size(35, 16);
+            this.rbEng.TabIndex = 11;
+            this.rbEng.TabStop = true;
+            this.rbEng.Text = "英";
+            this.rbEng.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbEngChn);
+            this.groupBox2.Controls.Add(this.rbEng);
+            this.groupBox2.Controls.Add(this.rbChn);
+            this.groupBox2.Location = new System.Drawing.Point(503, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(151, 33);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            // 
+            // rbEngChn
+            // 
+            this.rbEngChn.AutoSize = true;
+            this.rbEngChn.Location = new System.Drawing.Point(87, 10);
+            this.rbEngChn.Name = "rbEngChn";
+            this.rbEngChn.Size = new System.Drawing.Size(47, 16);
+            this.rbEngChn.TabIndex = 12;
+            this.rbEngChn.Text = "中英";
+            this.rbEngChn.UseVisualStyleBackColor = true;
+            // 
+            // ucAudioPlayer1
+            // 
+            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
+            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
+            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
+            this.ucAudioPlayer1.TabIndex = 8;
+            // 
             // ucWordView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -182,7 +219,8 @@
             this.Size = new System.Drawing.Size(653, 516);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,11 +235,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Button btnShowSentenc;
         private System.Windows.Forms.Button btnPlayWord;
-        private System.Windows.Forms.CheckBox cbTranslate;
         private ucAudioPlayer ucAudioPlayer1;
         private System.Windows.Forms.CheckBox cbPicture;
         private System.Windows.Forms.CheckBox cbSentence;
         private System.Windows.Forms.Button btnFavorite;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbEngChn;
+        private System.Windows.Forms.RadioButton rbEng;
+        private System.Windows.Forms.RadioButton rbChn;
 
     }
 }

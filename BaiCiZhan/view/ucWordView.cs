@@ -148,6 +148,22 @@ _   {0}  {1}
             }
 
         }
+        string getTranslateText(WordInfo word)
+        {
+            if (rbEng.Checked)
+            {
+                return word.sentence;
+            }
+            else if (rbChn.Checked)
+            {
+                return word.sentence_trans;
+            }
+            else 
+            {
+                return wordInfo.sentence + "\n" + wordInfo.sentence_trans;
+            }
+
+        }
 
         private void btnShowSentenc_Click(object sender, EventArgs e)
         {
@@ -158,15 +174,8 @@ _   {0}  {1}
                 {
                     return;
                 }
-                string text = "";
-                if (cbTranslate.Checked)
-                {
-                    text = wordInfo.sentence + "\n" + wordInfo.sentence_trans;
-                }
-                else
-                {
-                    text = wordInfo.sentence;
-                }
+                string text = getTranslateText(this.wordInfo);
+               
                 text = text.Replace("\r\n", "\n");
                 if (rtbSentence.Text.Contains(text))
                 {

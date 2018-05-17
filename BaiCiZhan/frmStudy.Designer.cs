@@ -39,6 +39,7 @@
             this.wordList1 = new BaiCiZhan.view.ucWordList();
             this.btnPlaylist = new System.Windows.Forms.Button();
             this.btnStopPlaylist = new System.Windows.Forms.Button();
+            this.cbPlaylistOrder = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -137,7 +138,7 @@
             // 
             // btnStopPlaylist
             // 
-            this.btnStopPlaylist.Location = new System.Drawing.Point(269, 3);
+            this.btnStopPlaylist.Location = new System.Drawing.Point(344, 3);
             this.btnStopPlaylist.Name = "btnStopPlaylist";
             this.btnStopPlaylist.Size = new System.Drawing.Size(75, 23);
             this.btnStopPlaylist.TabIndex = 9;
@@ -145,11 +146,24 @@
             this.btnStopPlaylist.UseVisualStyleBackColor = true;
             this.btnStopPlaylist.Click += new System.EventHandler(this.btnStopPlaylist_Click);
             // 
+            // cbPlaylistOrder
+            // 
+            this.cbPlaylistOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPlaylistOrder.FormattingEnabled = true;
+            this.cbPlaylistOrder.Items.AddRange(new object[] {
+            "顺序播放",
+            "随机播放"});
+            this.cbPlaylistOrder.Location = new System.Drawing.Point(259, 5);
+            this.cbPlaylistOrder.Name = "cbPlaylistOrder";
+            this.cbPlaylistOrder.Size = new System.Drawing.Size(73, 20);
+            this.cbPlaylistOrder.TabIndex = 10;
+            // 
             // frmStudy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 559);
+            this.Controls.Add(this.cbPlaylistOrder);
             this.Controls.Add(this.btnStopPlaylist);
             this.Controls.Add(this.btnPlaylist);
             this.Controls.Add(this.panel1);
@@ -177,5 +191,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.Button btnPlaylist;
         private System.Windows.Forms.Button btnStopPlaylist;
+        private System.Windows.Forms.ComboBox cbPlaylistOrder;
     }
 }

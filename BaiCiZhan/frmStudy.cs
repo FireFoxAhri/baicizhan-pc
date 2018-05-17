@@ -41,6 +41,7 @@ namespace BaiCiZhan
         {
             timer.Start();
             this.loadTime = DateTime.Now;
+            cbPlaylistOrder.SelectedIndex = 0;
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -193,14 +194,48 @@ namespace BaiCiZhan
             });
 
         }
+
         WordInfo getPlaylistNext()
         {
+            //0: 顺序播放;
+            //1: 随机播放;
+            if (cbPlaylistOrder.SelectedIndex == 1)
+            {
+                return getPlaylistRandomNext();
+            }
+            else
+            {
+                return getPlaylistSequenceNext();
+            }
+        }
+        WordInfo getPlaylistSequenceNext()
+        {
             var wordListbox = wordList1.WordListBox;
+            var count = wordListbox.Items.Count;
+            if (count <= 0)
+            {
+                throw new Exception("播放列表是空的");
+            }
             var index = wordListbox.SelectedIndex;
             wordListbox.SelectedIndex = index + 1;
             var word = wordList1.GetSelectWrod();
             return word;
         }
+        WordInfo getPlaylistRandomNext()
+        {
+            var wordListbox = wordList1.WordListBox;
+            var count = wordListbox.Items.Count;
+            if (count <= 0)
+            {
+                throw new Exception("播放列表是空的");
+            }
+            var index = QXX.Common.MathHelper.GetRandomList(0, count, 1).First();
+            wordListbox.SelectedIndex = index;
+            var word = wordList1.GetSelectWrod();
+            return word;
+        }
+
+
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {

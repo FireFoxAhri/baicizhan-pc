@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using NAudio.Wave;
 using System.IO;
 
+using BaiCiZhan.Helper;
 namespace BaiCiZhan.view
 {
     public partial class ucAudioPlayer : UserControl

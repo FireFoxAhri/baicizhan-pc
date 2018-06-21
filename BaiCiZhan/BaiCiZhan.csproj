@@ -57,6 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\FolderWordSource.cs" />
+    <Compile Include="DAL\IWordSource.cs" />
+    <Compile Include="DAL\WordFolderHelper.cs" />
+    <Compile Include="DAL\FileWordSourceFactory.cs" />
+    <Compile Include="DAL\WordSourceHelper.cs" />
     <Compile Include="frmAudioTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,12 +89,13 @@
     <Compile Include="Helper\AudioPlayer.cs" />
     <Compile Include="Helper\AudioPlayerFactory.cs" />
     <Compile Include="Helper\IAudioPlayer.cs" />
-    <Compile Include="Helper\WordHelper.cs" />
-    <Compile Include="Helper\WordSaveHelper.cs" />
+    <Compile Include="DAL\WordHelper.cs" />
+    <Compile Include="DAL\FileWordSource.cs" />
     <Compile Include="Helper\ZPKExtractor.cs" />
-    <Compile Include="Model\WordHistory.cs" />
+    <Compile Include="Model\WordFileInfo.cs" />
+    <Compile Include="Model\WordItemInfo.cs" />
     <Compile Include="Model\WordInfo.cs" />
-    <Compile Include="Model\WordSource.cs" />
+    <Compile Include="Model\WordFolderInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\ucAudioPlayer.cs">

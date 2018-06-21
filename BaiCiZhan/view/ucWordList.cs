@@ -10,17 +10,15 @@ using System.Windows.Forms;
 using BaiCiZhan.Model;
 
 using BaiCiZhan.Helper;
+using BaiCiZhan.DAL;
 
 namespace BaiCiZhan.view
 {
     public partial class ucWordList : UserControl
     {
-        //todo: 单词数据源(从文件夹里读取单词)和历史记录数据源, 属于不同的数据源, 根据单一职责原理, 这个WordList应该只处理一种数据源, 处理两种数据源必然会导致冗余; 
-        //解决办法: 1. 新建一个类统一单词数据源和历史记录数据源; 2. 为两种数据源分别建立不同的显示控件;
-        WordHelper wordHelper = new Helper.WordHelper();
-        IWordSaveHelper historyHelper = WordSaveFactory.GetWordSaveHelper(WordSaveFactory.WordSaveType.history);
-        IWordSaveHelper favoriteHelper = WordSaveFactory.GetWordSaveHelper(WordSaveFactory.WordSaveType.favorit);
+        #region 初始化
 
+        WordSourceHelper wordSourceHelper = new WordSourceHelper();
         public ListBox WordListBox
         {
             get
@@ -50,52 +48,24 @@ namespace BaiCiZhan.view
             this.cboWordSource.SelectedIndexChanged += cboWordSource_SelectedIndexChanged;
         }
 
+
         void WordList_Load(object sender, EventArgs e)
         {
-            List<string> lstSource = Helper.WordHelper.GetWordSources().Select(n => n.Name).ToList();
-            lstSource.Add(historyHelper.Name);
-            lstSource.Add(favoriteHelper.Name);
+            var lstSource = wordSourceHelper.GetAllSource();
             this.cboWordSource.DataSource = lstSource;
-
             loadList();
         }
+
+        #endregion
+
+        #region 事件
 
         void cboWordSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             tbWord.Text = "";
-            if (isHistory())
-            {
-                loadList();
-                return;
-            }
-            var source = cboWordSource.SelectedItem as string;
-            wordHelper.SetDataSourceByName(source);
             loadList();
         }
 
-        //如果选中的数据源是历史记录需要单独处理;
-        bool isHistory()
-        {
-            var item = cboWordSource.SelectedItem as string;
-            var helper = getWordSaveHelper(item);
-            return helper != null;
-        }
-        IWordSaveHelper getWordSaveHelper(string name = "")
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                name = cboWordSource.SelectedItem as string;
-            }
-            if (name == historyHelper.Name)
-            {
-                return historyHelper;
-            }
-            else if (name == favoriteHelper.Name)
-            {
-                return favoriteHelper;
-            }
-            return null;
-        }
         void tbWord_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
@@ -109,49 +79,29 @@ namespace BaiCiZhan.view
             }
         }
 
-        public WordInfo GetSelectWrod()
-        {
-            if (isHistory())
-            {
-                var wh = listBox1.SelectedItem as WordSaveInfo;
-                return Helper.WordHelper.GetWordBySourceName(wh.WordSource, wh.Word);
-            }
-
-            var word = listBox1.SelectedItem as string;
-            if (string.IsNullOrEmpty(word))
-            {
-                return null;
-            }
-
-            var wd = wordHelper.GetWord(word);
-            return wd;
-        }
-
         void tbWord_TextChanged(object sender, EventArgs e)
         {
             loadList();
+        }
+
+        #endregion
+
+        #region 获取数据
+
+        public WordInfo GetSelectWrod()
+        {
+            var wh = listBox1.SelectedItem as WordItemInfo;
+            return WordHelper.GetWordByFolderName(wh.WordSource, wh.Word);
         }
 
         void loadList()
         {
             try
             {
-                if (isHistory())
-                {
-                    string wordPattern1 = tbWord.Text.Trim();
-
-                    var words1 = getWordSaveHelper().GetAll(wordPattern1);
-
-                    listBox1.Items.Clear();
-                    for (int i = 0; i < words1.Count(); i++)
-                    {
-                        var index = listBox1.Items.Add(words1[i]);
-                    }
-                    return;
-                }
-
                 string wordPattern = tbWord.Text.Trim();
-                List<string> words = wordHelper.GetWordList(wordPattern);
+                var name = cboWordSource.SelectedItem as string;
+                IWordSource source = wordSourceHelper.GetWordSource(name);
+                var words = source.GetAll(wordPattern);
                 listBox1.Items.Clear();
                 listBox1.Items.AddRange(words.Select(n => n as object).ToArray());
             }
@@ -160,5 +110,7 @@ namespace BaiCiZhan.view
                 MessageBox.Show(ex.Message);
             }
         }
+
+        #endregion
     }
 }

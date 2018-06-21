@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaiCiZhan.Model;
 
 using BaiCiZhan.Helper;
+using BaiCiZhan.DAL;
 
 namespace BaiCiZhan.view
 {
@@ -81,8 +82,8 @@ namespace BaiCiZhan.view
 
             #region 添加历史记录
 
-            IWordSaveHelper helper = Helper.WordSaveFactory
-                            .GetWordSaveHelper(Helper.WordSaveFactory.WordSaveType.history);
+            IWordSource helper = FileWordSourceFactory
+                            .GetFileWordSource(FileWordSourceFactory.HISTORY);
 
             ////如果当前单词和最后一个单词不相同就添加, 也就是最近的单词不重复添加
             //var wh = helper.GetAll().Aggregate((max, n) => max.AddTime > n.AddTime ? max : n);
@@ -158,7 +159,7 @@ _   {0}  {1}
             {
                 return word.sentence_trans;
             }
-            else 
+            else
             {
                 return wordInfo.sentence + "\n" + wordInfo.sentence_trans;
             }
@@ -175,7 +176,7 @@ _   {0}  {1}
                     return;
                 }
                 string text = getTranslateText(this.wordInfo);
-               
+
                 text = text.Replace("\r\n", "\n");
                 if (rtbSentence.Text.Contains(text))
                 {
@@ -225,7 +226,7 @@ _   {0}  {1}
             var word = this.wordInfo.word;
             if (!isFavorite(word))
             {
-                var helper = Helper.WordSaveFactory.GetWordSaveHelper(Helper.WordSaveFactory.WordSaveType.favorit);
+                var helper = FileWordSourceFactory.GetFileWordSource(FileWordSourceFactory.FAVORITE);
                 helper.Add(this.wordInfo);
                 btnFavorite.Text = "已收藏";
             }
@@ -233,7 +234,7 @@ _   {0}  {1}
 
         bool isFavorite(string word)
         {
-            var helper = Helper.WordSaveFactory.GetWordSaveHelper(Helper.WordSaveFactory.WordSaveType.favorit);
+            var helper = FileWordSourceFactory.GetFileWordSource(FileWordSourceFactory.FAVORITE);
             var w = helper.GetAll(word + "/").FirstOrDefault();
             return w != null;
         }

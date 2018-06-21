@@ -126,7 +126,18 @@ namespace BaiCiZhan.Helper
             }
             var jsonFile = Path.Combine(path, "meta.json");
             var json = File.ReadAllText(jsonFile);
-            WordInfo info = JsonConvert.DeserializeObject<WordInfo>(json);
+
+            WordInfo info = null;
+            try
+            {
+                info = JsonConvert.DeserializeObject<WordInfo>(json);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
 
             info.sentence_audio = Path.Combine(path, info.sentence_audio);
             info.word_audio = Path.Combine(path, info.word_audio);

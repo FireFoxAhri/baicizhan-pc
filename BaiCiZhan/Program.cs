@@ -15,10 +15,16 @@ namespace BaiCiZhan
         static void Main()
         {
             Application.ApplicationExit += Application_ApplicationExit;
+            Application.ThreadException += Application_ThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
 
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            
         }
 
         static void Application_ApplicationExit(object sender, EventArgs e)

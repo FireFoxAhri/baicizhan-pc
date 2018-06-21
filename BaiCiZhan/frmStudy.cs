@@ -11,6 +11,7 @@ using QXX.Common.Forms;
 using BaiCiZhan.Helper;
 
 using BaiCiZhan.Model;
+using Newtonsoft.Json;
 namespace BaiCiZhan
 {
     public partial class frmStudy : Form
@@ -115,6 +116,11 @@ namespace BaiCiZhan
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            WordInfo info = new WordInfo();
+            info.word = "ceshi";
+            var json = JsonConvert.SerializeObject(info);
+
+            info = JsonConvert.DeserializeObject<WordInfo>(json);
 
         }
 
@@ -217,6 +223,7 @@ namespace BaiCiZhan
                 throw new Exception("播放列表是空的");
             }
             var index = wordListbox.SelectedIndex;
+            index = index < 0 ? 0 : index;
             wordListbox.SelectedIndex = index + 1;
             var word = wordList1.GetSelectWrod();
             return word;
@@ -239,8 +246,26 @@ namespace BaiCiZhan
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
-            isPlaylist = true;
-            loadWord();
+            try
+            {
+                isPlaylist = true;
+                //如果没有选中单词, 就选中第一个单词
+                var wordListbox = wordList1.WordListBox;
+                var count = wordListbox.Items.Count;
+                if (count <= 0)
+                {
+                    throw new Exception("播放列表是空的");
+                }
+                if (wordListbox.SelectedIndex < 0)
+                {
+                    wordListbox.SelectedIndex = 0;
+                }
+                loadWord();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnStopPlaylist_Click(object sender, EventArgs e)

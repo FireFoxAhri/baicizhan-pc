@@ -46,13 +46,12 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(626, 504);
+            this.btnTest.Location = new System.Drawing.Point(626, 500);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 2;
             this.btnTest.Text = "测试";
             this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // btnLoadWord
@@ -70,10 +69,10 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnTest);
             this.panel1.Controls.Add(this.statusStrip1);
             this.panel1.Controls.Add(this.ucWordView1);
             this.panel1.Controls.Add(this.btnLoadWord);
-            this.panel1.Controls.Add(this.btnTest);
             this.panel1.Location = new System.Drawing.Point(165, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(717, 523);

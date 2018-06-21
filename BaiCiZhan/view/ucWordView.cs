@@ -92,7 +92,7 @@ namespace BaiCiZhan.view
             //}
 
             //三天之内不重复添加
-            //查找最近一小时添加的单词, 如果没找到, 就添加
+            //查找最近三天之内添加的单词, 如果没找到, 就添加
             var wh = helper.GetAll().FirstOrDefault(n => n.AddTime > DateTime.Now.AddDays(-3) && n.Word == wordInfo.word);
             if (wh == null)
             {

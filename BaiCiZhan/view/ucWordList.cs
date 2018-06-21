@@ -25,7 +25,7 @@ namespace BaiCiZhan.view
         {
             get
             {
-                return this.listView1;
+                return this.listBox1;
             }
         }
 
@@ -101,10 +101,10 @@ namespace BaiCiZhan.view
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
             {
                 e.Handled = true;
-                listView1.Select();
-                if (listView1.Items.Count >= 1)
+                listBox1.Select();
+                if (listBox1.Items.Count >= 1)
                 {
-                    listView1.SelectedIndex = 0;
+                    listBox1.SelectedIndex = 0;
                 }
             }
         }
@@ -113,11 +113,11 @@ namespace BaiCiZhan.view
         {
             if (isHistory())
             {
-                var wh = listView1.SelectedItem as WordSaveInfo;
+                var wh = listBox1.SelectedItem as WordSaveInfo;
                 return Helper.WordHelper.GetWordBySourceName(wh.WordSource, wh.Word);
             }
 
-            var word = listView1.SelectedItem as string;
+            var word = listBox1.SelectedItem as string;
             if (string.IsNullOrEmpty(word))
             {
                 return null;
@@ -142,18 +142,18 @@ namespace BaiCiZhan.view
 
                     var words1 = getWordSaveHelper().GetAll(wordPattern1);
 
-                    listView1.Items.Clear();
+                    listBox1.Items.Clear();
                     for (int i = 0; i < words1.Count(); i++)
                     {
-                        var index = listView1.Items.Add(words1[i]);
+                        var index = listBox1.Items.Add(words1[i]);
                     }
                     return;
                 }
 
                 string wordPattern = tbWord.Text.Trim();
                 List<string> words = wordHelper.GetWordList(wordPattern);
-                listView1.Items.Clear();
-                listView1.Items.AddRange(words.Select(n => n as object).ToArray());
+                listBox1.Items.Clear();
+                listBox1.Items.AddRange(words.Select(n => n as object).ToArray());
             }
             catch (Exception ex)
             {

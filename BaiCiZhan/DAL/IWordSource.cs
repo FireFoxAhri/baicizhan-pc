@@ -14,7 +14,7 @@ namespace BaiCiZhan.DAL
     /// </summary>
     public interface IWordSource
     {
-        string Name { get; set;}
+        string Name { get; set; }
         void Add(WordInfo wordInfo);
         List<WordItemInfo> GetAll(string pattern = "");
     }

@@ -61,7 +61,7 @@
     <Compile Include="DAL\IWordSource.cs" />
     <Compile Include="DAL\WordFolderHelper.cs" />
     <Compile Include="DAL\FileWordSourceFactory.cs" />
-    <Compile Include="DAL\WordSourceHelper.cs" />
+    <Compile Include="DAL\WordSourceAdapter.cs" />
     <Compile Include="frmAudioTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +181,9 @@
     <None Include="Resources\Back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y  $(TargetPath) "D:\source\Release\baicizhan\Debug\BaiCiZhan.exe"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

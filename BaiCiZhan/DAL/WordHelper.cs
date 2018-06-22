@@ -34,13 +34,13 @@ namespace BaiCiZhan.DAL
         /// <summary>
         /// 通过数据源的name获取wordlist
         /// </summary>
-        /// <param name="wordSoureName"></param>
+        /// <param name="wordFolderName"></param>
         /// <param name="wordPattern"></param>
         /// <returns></returns>
-        public static List<string> GetWordListByFolderName(string wordSoureName, string wordPattern = "")
+        public static List<string> GetWordListByFolderName(string wordFolderName, string wordPattern = "")
         {
             WordHelper helper = new WordHelper();
-            helper.SetDataSourceByName(wordSoureName);
+            helper.SetDataSourceByName(wordFolderName);
             return helper.GetWordList(wordPattern);
         }
 

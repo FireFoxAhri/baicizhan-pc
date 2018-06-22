@@ -19,7 +19,6 @@ namespace BaiCiZhan.DAL
         };
         public static IWordSource GetFileWordSource(string name)
         {
-
             var wordFile = WordFileInfos.FirstOrDefault(n => n.Name == name);
             if (wordFile != null)
             {
@@ -29,7 +28,16 @@ namespace BaiCiZhan.DAL
             {
                 return null;
             }
+        }
 
+        public static List<string> GetAllFileWordSourceName()
+        {
+            return WordFileInfos.Select(n => n.Name).ToList();
+        }
+        public static IEnumerable<IWordSource> GetAllFileWordSource()
+        {
+            var list = WordFileInfos.Select(n => new FileWordSource(n.FileName, n.Name));
+            return list;
         }
     }
 }

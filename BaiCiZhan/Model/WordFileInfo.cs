@@ -8,7 +8,6 @@ namespace BaiCiZhan.Model
 {
     public class WordFileInfo
     {
-
         public string Name { set; get; }
         public string FileName { set; get; }
     }

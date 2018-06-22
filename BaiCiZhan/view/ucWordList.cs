@@ -18,7 +18,7 @@ namespace BaiCiZhan.view
     {
         #region 初始化
 
-        WordSourceHelper wordSourceHelper = new WordSourceHelper();
+        WordSourceAdapter wordSourceHelper = new WordSourceAdapter();
         public ListBox WordListBox
         {
             get
@@ -51,7 +51,7 @@ namespace BaiCiZhan.view
 
         void WordList_Load(object sender, EventArgs e)
         {
-            var lstSource = wordSourceHelper.GetAllSource();
+            var lstSource = wordSourceHelper.GetAllSourceName();
             this.cboWordSource.DataSource = lstSource;
             loadList();
         }

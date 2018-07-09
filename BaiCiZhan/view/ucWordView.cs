@@ -46,6 +46,7 @@ namespace BaiCiZhan.view
             this.Disposed += WordView_Disposed;
             this.cbPicture.Checked = true;
             this.cbSentence.Checked = true;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
         }
 
         void WordView_Disposed(object sender, EventArgs e)
@@ -111,7 +112,6 @@ _   {0}  {1}
             rtbWrodInfo.Text = msg;
             if (isShowPicture)
             {
-                pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
                 pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
             }
             ucAudioPlayer1.File = wordInfo.sentence_audio;
@@ -237,6 +237,19 @@ _   {0}  {1}
             var helper = FileWordSourceFactory.GetFileWordSource(FileWordSourceFactory.FAVORITE);
             var w = helper.GetAll(word + "/").FirstOrDefault();
             return w != null;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.BackgroundImage == null)
+            {
+                pictureBox1.BackgroundImage = new Bitmap(wordInfo.image_file);
+            }
+            else
+            {
+                pictureBox1.BackgroundImage = null;
+
+            }
         }
     }
 }

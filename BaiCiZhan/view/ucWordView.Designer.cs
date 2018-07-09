@@ -34,15 +34,15 @@
             this.rtbInputSentence = new System.Windows.Forms.RichTextBox();
             this.btnShowSentenc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbEngChn = new System.Windows.Forms.RadioButton();
+            this.rbEng = new System.Windows.Forms.RadioButton();
+            this.rbChn = new System.Windows.Forms.RadioButton();
+            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             this.btnPlayWord = new System.Windows.Forms.Button();
             this.cbPicture = new System.Windows.Forms.CheckBox();
             this.cbSentence = new System.Windows.Forms.CheckBox();
             this.btnFavorite = new System.Windows.Forms.Button();
-            this.rbChn = new System.Windows.Forms.RadioButton();
-            this.rbEng = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbEngChn = new System.Windows.Forms.RadioButton();
-            this.ucAudioPlayer1 = new BaiCiZhan.view.ucAudioPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -67,6 +67,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(225, 165);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // rtbSentence
             // 
@@ -114,6 +115,56 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "句子";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbEngChn);
+            this.groupBox2.Controls.Add(this.rbEng);
+            this.groupBox2.Controls.Add(this.rbChn);
+            this.groupBox2.Location = new System.Drawing.Point(503, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(151, 33);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            // 
+            // rbEngChn
+            // 
+            this.rbEngChn.AutoSize = true;
+            this.rbEngChn.Location = new System.Drawing.Point(87, 10);
+            this.rbEngChn.Name = "rbEngChn";
+            this.rbEngChn.Size = new System.Drawing.Size(47, 16);
+            this.rbEngChn.TabIndex = 12;
+            this.rbEngChn.Text = "中英";
+            this.rbEngChn.UseVisualStyleBackColor = true;
+            // 
+            // rbEng
+            // 
+            this.rbEng.AutoSize = true;
+            this.rbEng.Checked = true;
+            this.rbEng.Location = new System.Drawing.Point(4, 10);
+            this.rbEng.Name = "rbEng";
+            this.rbEng.Size = new System.Drawing.Size(35, 16);
+            this.rbEng.TabIndex = 11;
+            this.rbEng.TabStop = true;
+            this.rbEng.Text = "英";
+            this.rbEng.UseVisualStyleBackColor = true;
+            // 
+            // rbChn
+            // 
+            this.rbChn.AutoSize = true;
+            this.rbChn.Location = new System.Drawing.Point(45, 10);
+            this.rbChn.Name = "rbChn";
+            this.rbChn.Size = new System.Drawing.Size(35, 16);
+            this.rbChn.TabIndex = 10;
+            this.rbChn.Text = "中";
+            this.rbChn.UseVisualStyleBackColor = true;
+            // 
+            // ucAudioPlayer1
+            // 
+            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
+            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
+            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
+            this.ucAudioPlayer1.TabIndex = 8;
+            // 
             // btnPlayWord
             // 
             this.btnPlayWord.Image = global::BaiCiZhan.Properties.Resources.Play;
@@ -153,56 +204,6 @@
             this.btnFavorite.Text = "收藏";
             this.btnFavorite.UseVisualStyleBackColor = true;
             this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
-            // 
-            // rbChn
-            // 
-            this.rbChn.AutoSize = true;
-            this.rbChn.Location = new System.Drawing.Point(45, 10);
-            this.rbChn.Name = "rbChn";
-            this.rbChn.Size = new System.Drawing.Size(35, 16);
-            this.rbChn.TabIndex = 10;
-            this.rbChn.Text = "中";
-            this.rbChn.UseVisualStyleBackColor = true;
-            // 
-            // rbEng
-            // 
-            this.rbEng.AutoSize = true;
-            this.rbEng.Checked = true;
-            this.rbEng.Location = new System.Drawing.Point(4, 10);
-            this.rbEng.Name = "rbEng";
-            this.rbEng.Size = new System.Drawing.Size(35, 16);
-            this.rbEng.TabIndex = 11;
-            this.rbEng.TabStop = true;
-            this.rbEng.Text = "英";
-            this.rbEng.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbEngChn);
-            this.groupBox2.Controls.Add(this.rbEng);
-            this.groupBox2.Controls.Add(this.rbChn);
-            this.groupBox2.Location = new System.Drawing.Point(503, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(151, 33);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            // 
-            // rbEngChn
-            // 
-            this.rbEngChn.AutoSize = true;
-            this.rbEngChn.Location = new System.Drawing.Point(87, 10);
-            this.rbEngChn.Name = "rbEngChn";
-            this.rbEngChn.Size = new System.Drawing.Size(47, 16);
-            this.rbEngChn.TabIndex = 12;
-            this.rbEngChn.Text = "中英";
-            this.rbEngChn.UseVisualStyleBackColor = true;
-            // 
-            // ucAudioPlayer1
-            // 
-            this.ucAudioPlayer1.Location = new System.Drawing.Point(9, 15);
-            this.ucAudioPlayer1.Name = "ucAudioPlayer1";
-            this.ucAudioPlayer1.Size = new System.Drawing.Size(418, 35);
-            this.ucAudioPlayer1.TabIndex = 8;
             // 
             // ucWordView
             // 

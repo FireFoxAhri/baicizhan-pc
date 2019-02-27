@@ -42,7 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="QXX.Common">
-      <HintPath>..\..\..\release\QXX.Common\QXX.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\program files\百词斩\QXX.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -86,6 +86,7 @@
     <Compile Include="frmStudy.Designer.cs">
       <DependentUpon>frmStudy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AudioHelper.cs" />
     <Compile Include="Helper\AudioPlayer.cs" />
     <Compile Include="Helper\AudioPlayerFactory.cs" />
     <Compile Include="Helper\IAudioPlayer.cs" />
@@ -182,7 +183,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y  $(TargetPath) "D:\source\Release\baicizhan\Debug\BaiCiZhan.exe"</PostBuildEvent>
+    <PostBuildEvent>rem xcopy /y  $(TargetPath) "D:\source\Release\baicizhan\Debug\BaiCiZhan.exe"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

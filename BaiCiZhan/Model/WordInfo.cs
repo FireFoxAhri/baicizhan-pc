@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace BaiCiZhan.Model
 {
 
+   
     /*
 {
     "topic_id": 5039,
@@ -26,6 +27,7 @@ namespace BaiCiZhan.Model
      */
     public class WordInfo
     {
+        //路径全部返回绝对路径;
         public int topic_id { get; set; }
         public string word { get; set; }
         public string word_audio { get; set; }

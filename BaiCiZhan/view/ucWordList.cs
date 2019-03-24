@@ -37,7 +37,7 @@ namespace BaiCiZhan.view
         public ucWordList()
         {
             InitializeComponent();
-
+            
             if (this.DesignMode)
             {
                 return;

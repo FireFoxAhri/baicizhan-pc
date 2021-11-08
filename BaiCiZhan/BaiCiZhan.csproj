@@ -41,8 +41,9 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="QXX.Common">
-      <HintPath>..\..\..\..\..\program files\百词斩\QXX.Common.dll</HintPath>
+    <Reference Include="QXX.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>data\QXX.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -148,6 +149,30 @@
     <EmbeddedResource Include="view\ucWordView.resx">
       <DependentUpon>ucWordView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="data\demo\zpk\0\zp_421_13_0_20201225110046.zpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk\0\zp_80_13_0_20191202152000.zpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk\1\zp_118_13_0_20190803155608.zpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk\1\zp_96_13_0_20181030152433.zpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk_解压\adverb\meta.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk_解压\afflict\meta.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk_解压\allege\meta.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\demo\zpk_解压\carefree\meta.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="data\百词斩背单词.zip" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -167,7 +192,50 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="data\demo\zpk_解压\adverb\3_0_20161224070725_59171_c.aac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\adverb\3_0_20161224070725_94809_c.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\adverb\9dbbbd93d8e6d25a4d29076a72be8f14_9104_1575258344.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\adverb\d_103_80_0_3_20150809000201.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\afflict\afflict.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\afflict\i_2_96_0_3_20150808140934.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\afflict\sa_2_96_0_3_20150808140934.aac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\allege\26db3044b2b97624f523540ddae4a66e_27052_1554091170.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\allege\9b4a0ea7001e0e78d097ea4be84f804c_15208_1534153244.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\allege\a401ed27a6a537fcdc9285bd2659afd8_160453_1534153230.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\carefree\1fed53093b57392d98b7e0fab507d856_41312_1603953193.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\carefree\49d499a1934374f6d47bdf09e94daae4_107995_1603794758.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\carefree\carefree.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\demo\zpk_解压\carefree\d_13_421_0_2_20150808152116.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\HISTORY_FILE.TXT" />
+    <Content Include="data\QXX.Common.dll" />
     <Content Include="data\Screenshot_2018-02-06-21-53-34.jpg" />
     <Content Include="data\使用说明.png" />
     <Content Include="data\使用说明.txt" />

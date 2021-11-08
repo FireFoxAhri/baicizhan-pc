@@ -200,7 +200,7 @@ zpk由头部,中部,尾部组成,中部和尾部之间有位置信息;
         /// <returns></returns>
         int getEndPosition()
         {
-            const int LastLen = 160;
+            const int LastLen = 16*20;
             var bs = getBytes(buffer, buffer.Length - LastLen, buffer.Length);
             bs = bs.Reverse().ToArray();
             int i = getIndexOfSubArray(bs, "000000");  //得到的值是倒着从1数文件尾部的第一个字符的位置;

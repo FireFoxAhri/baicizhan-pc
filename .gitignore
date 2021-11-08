@@ -155,3 +155,8 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 /packages/NAudio.1.8.4
+/.vs
+/packages
+
+
+

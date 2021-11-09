@@ -21,11 +21,14 @@ namespace BaiCiZhan
 
         DateTime lastShowTime;
         ZPKExtractor extractor = new ZPKExtractor();
+
         public frmExtractor()
         {
             InitializeComponent();
             extractor.ShowProcessing += extractor_ShowProcessing;
             lastShowTime = DateTime.Now;
+            ucOpenFileDialogZpk.btnSelect.Visible = false;
+            ucOpenFileDialog2.btnSelect.Visible = false;
         }
 
         void extractor_ShowProcessing(string msg, int level)
@@ -48,6 +51,7 @@ namespace BaiCiZhan
                 if (extDir == "")
                 {
                     extDir = dirInfo.FullName + "_解压";
+                    ucOpenFileDialog2.FilePath = extDir;
                 }
 
                 extractor.ExtractFiles(dirInfo, extDir);

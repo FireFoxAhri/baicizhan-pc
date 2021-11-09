@@ -60,25 +60,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 12);
+            this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 3;
-            this.label1.Text = "zpk文件夹";
+            this.label1.Text = "zpk文件夹:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 66);
+            this.label2.Location = new System.Drawing.Point(14, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.Size = new System.Drawing.Size(83, 12);
             this.label2.TabIndex = 3;
-            this.label2.Text = "解压后文件夹";
+            this.label2.Text = "解压后文件夹:";
             // 
             // ucOpenFileDialog2
             // 
             this.ucOpenFileDialog2.FilePath = "";
-            this.ucOpenFileDialog2.Location = new System.Drawing.Point(14, 91);
+            this.ucOpenFileDialog2.Location = new System.Drawing.Point(13, 91);
             this.ucOpenFileDialog2.Name = "ucOpenFileDialog2";
             this.ucOpenFileDialog2.Size = new System.Drawing.Size(364, 30);
             this.ucOpenFileDialog2.TabIndex = 2;

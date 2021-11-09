@@ -21,8 +21,9 @@ https://www.bilibili.com/video/BV1gv411M7fP/
 ## 单词提取
 以下操作使用android版, ios版未测试; 
 1. 使用百词斩官方app缓存单词, 缓存的位置在: `Android/data/com.jiongji.andriod.card/files/baicizhan/zpack/`, 缓存的文件是一堆zpk后缀的文件, 一个文件表示一个单词; 
-2. 缓存成功后把缓存的文件拷贝到电脑, 
-3. 打开菜单"解压zpk", 填写路径, 点击"提取"
+2. 缓存成功后把缓存的文件拷贝到电脑
+3. 打开baicizhan.exe, 打开菜单"解压zpk", 填写刚才复制的缓存文件夹的路径, 点击"解压"
+4. 等待解压完成
 
 ![](https://gitee.com/qiaoxingxing/blog-pic/raw/master/index_files/c6c88a1e-5ef8-4567-8de7-6138e4908403.png)
 
